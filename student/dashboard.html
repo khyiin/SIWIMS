@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Student Dashboard | SIWIMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="dashboard" data-role="student">
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
+    <!-- Shared icon sprite -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9z"/><path d="M8 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H16"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15V10a6 6 0 1 0-12 0v5l-1.5 3h15z"/><path d="M10 21a2 2 0 0 0 4 0"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h2.5A1.5 1.5 0 0 1 19 5.5v13a1.5 1.5 0 0 1-1.5 1.5H15"/><path d="M10 8l-4 4 4 4"/><path d="M6 12h9"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 16V4"/><path d="m7 9 5-5 5 5"/><path d="M4 16v2.5A1.5 1.5 0 0 0 5.5 20h13a1.5 1.5 0 0 0 1.5-1.5V16"/></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 5-5 3.5 3.5L21 6"/><path d="M15 6h6v6"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="dash-layout">
+      <!-- ==================== Sidebar ==================== -->
+      <aside class="dash-sidebar" id="dashSidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">SW</span>
+          <span class="brand-name">
+            <strong>SIWIMS</strong>
+            <span>Internship Management</span>
+          </span>
+        </a>
+
+        <nav class="side-nav" aria-label="Student navigation">
+          <p class="side-group-label">Overview</p>
+          <a class="side-link" href="#overview" data-nav="overview" data-title="Dashboard Overview"><svg><use href="#i-grid"/></svg> Dashboard</a>
+          <a class="side-link" href="#placement" data-nav="placement" data-title="My Placement"><svg><use href="#i-building"/></svg> My Placement</a>
+
+          <p class="side-group-label">Internship</p>
+          <a class="side-link" href="#requirements" data-nav="requirements" data-title="Requirements"><svg><use href="#i-clipboard"/></svg> Requirements <span class="side-count">1</span></a>
+          <a class="side-link" href="#attendance" data-nav="attendance" data-title="Attendance &amp; Hours"><svg><use href="#i-clock"/></svg> Attendance &amp; Hours</a>
+          <a class="side-link" href="#reports" data-nav="reports" data-title="Accomplishment Reports"><svg><use href="#i-file"/></svg> Accomplishment Reports</a>
+
+          <p class="side-group-label">Account</p>
+          <a class="side-link" href="#profile" data-nav="profile" data-title="My Profile"><svg><use href="#i-user"/></svg> My Profile</a>
+          <a class="side-link" href="#notifications" data-nav="notifications" data-title="Notifications"><svg><use href="#i-bell"/></svg> Notifications <span class="side-count">3</span></a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <span class="avatar" data-user-initials>ST</span>
+            <span class="user-meta">
+              <strong data-user-name>Student</strong>
+              <span data-user-role>Student</span>
+            </span>
+          </div>
+          <button class="btn-logout" type="button" data-action="logout">
+            <svg><use href="#i-logout"/></svg> Log Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- ==================== Main ==================== -->
+      <div class="dash-main">
+        <header class="dash-topbar">
+          <div class="topbar-left">
+            <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle sidebar">
+              <svg width="18" height="18"><use href="#i-menu"/></svg>
+            </button>
+            <div class="breadcrumb">
+              <span class="crumb-role">Student Portal</span>
+              <span class="crumb-title" data-page-title>Dashboard Overview</span>
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <button class="icon-btn" id="notifToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notifPanel">
+              <svg><use href="#i-bell"/></svg>
+              <span class="notif-count" data-notif-count hidden></span>
+            </button>
+            <div class="topbar-user">
+              <span class="avatar avatar--light" data-user-initials>ST</span>
+              <span class="user-meta">
+                <strong data-user-name>Student</strong>
+                <span data-user-role>Student</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="notif-panel" id="notifPanel" hidden>
+            <div class="notif-panel-head"><span>Notifications</span><span class="card-head-note">3 unread</span></div>
+            <div class="notif-list">
+              <div class="notif-item" data-notif-unread>
+                <span class="notif-dot"></span>
+                <div><span class="notif-title">Placement approved</span>Your placement was validated by the school.<span class="notif-time">2 hours ago</span></div>
+              </div>
+              <div class="notif-item" data-notif-unread>
+                <span class="notif-dot"></span>
+                <div><span class="notif-title">Attendance verified</span>Your Nov 18 time logs were verified.<span class="notif-time">Yesterday</span></div>
+              </div>
+              <div class="notif-item" data-notif-unread>
+                <span class="notif-dot"></span>
+                <div><span class="notif-title">Requirement revision</span>Please re-upload a clearer medical certificate.<span class="notif-time">2 days ago</span></div>
+              </div>
+              <div class="notif-item">
+                <span class="notif-dot" style="background: var(--color-border)"></span>
+                <div><span class="notif-title">Weekly report approved</span>Week 3 report was approved.<span class="notif-time">4 days ago</span></div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="dash-content">
+          <!-- ============ Overview ============ -->
+          <section class="dash-section" data-section="overview">
+            <div class="hero-panel">
+              <div class="hero-layout">
+                <div>
+                  <span class="hero-eyebrow">Student Internship Journey</span>
+                  <h1>Welcome back, <span data-user-name>Student</span>.</h1>
+                  <p>
+                    You are on track with your work immersion. Keep logging
+                    verified hours and completing your requirements to finish
+                    on schedule.
+                  </p>
+                  <div class="hero-stats">
+                    <div class="hero-stat"><strong>248</strong><span>Verified hours</span></div>
+                    <div class="hero-stat"><strong>238</strong><span>Hours remaining</span></div>
+                    <div class="hero-stat"><strong>4/5</strong><span>Requirements</span></div>
+                  </div>
+                  <div class="hero-actions">
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Logging attendance">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-clock"/></svg> Log Attendance
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Submitting a report">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> Submit Report
+                    </button>
+                  </div>
+                </div>
+                <div class="ring ring--onDark" data-ring="51">
+                  <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100"/></svg>
+                  <div class="ring-center"><strong>51%</strong><span>Completed</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-label">Application Status</span>
+                  <span class="stat-icon"><svg><use href="#i-clipboard"/></svg></span>
+                </div>
+                <p class="stat-value">Accepted</p>
+                <p class="stat-foot">Brightwave Solutions Inc. &middot; IT Intern</p>
+              </article>
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-label">Internship Progress</span>
+                  <span class="stat-icon"><svg><use href="#i-trend"/></svg></span>
+                </div>
+                <p class="stat-value">Ongoing</p>
+                <p class="stat-foot">Deployed October 6, 2026</p>
+              </article>
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-label">Verified Hours</span>
+                  <span class="stat-icon"><svg><use href="#i-clock"/></svg></span>
+                </div>
+                <p class="stat-value">248 <small>of 486</small></p>
+                <p class="stat-foot"><span class="trend trend--up">&#9650; 16 hrs</span> this week</p>
+              </article>
+
+              <article class="stat-card">
+                <div class="stat-top">
+                  <span class="stat-label">Requirements</span>
+                  <span class="stat-icon"><svg><use href="#i-file"/></svg></span>
+                </div>
+                <p class="stat-value">4 <small>of 5</small></p>
+                <p class="stat-foot">1 item requires revision</p>
+              </article>
+            </div>
+
+            <div class="grid-2-1">
+              <div class="dash-card">
+                <div class="card-head">
+                  <h2>Weekly Rendered Hours</h2>
+                  <span class="card-head-note">Last 7 weeks &middot; verified</span>
+                </div>
+                <div class="bar-chart">
+                  <div class="bar" title="Week 1 &middot; 32 hours"><i style="--h:66"></i><span>W1</span></div>
+                  <div class="bar" title="Week 2 &middot; 36 hours"><i style="--h:75"></i><span>W2</span></div>
+                  <div class="bar" title="Week 3 &middot; 40 hours"><i style="--h:83"></i><span>W3</span></div>
+                  <div class="bar" title="Week 4 &middot; 34 hours"><i style="--h:71"></i><span>W4</span></div>
+                  <div class="bar" title="Week 5 &middot; 38 hours"><i style="--h:79"></i><span>W5</span></div>
+                  <div class="bar" title="Week 6 &middot; 44 hours"><i style="--h:92"></i><span>W6</span></div>
+                  <div class="bar" title="Week 7 &middot; 24 hours so far"><i style="--h:50"></i><span>W7</span></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head">
+                  <h2>Hour Completion</h2>
+                  <span class="card-head-note">Supervisor-verified</span>
+                </div>
+                <div style="display:flex; justify-content:center; padding: var(--space-2) 0 var(--space-4)">
+                  <div class="ring ring--sm" data-ring="51">
+                    <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100"/></svg>
+                    <div class="ring-center"><strong>51%</strong><span>of 486 hrs</span></div>
+                  </div>
+                </div>
+                <div class="meter-list">
+                  <div class="meter-row">
+                    <span class="meter-name">Verified</span>
+                    <span class="meter-track"><span class="meter-bar" style="--h:51"></span></span>
+                    <span class="meter-value">248</span>
+                  </div>
+                  <div class="meter-row">
+                    <span class="meter-name">Pending</span>
+                    <span class="meter-track"><span class="meter-bar" style="--h:3"></span></span>
+                    <span class="meter-value">16</span>
+                  </div>
+                  <div class="meter-row">
+                    <span class="meter-name">Remaining</span>
+                    <span class="meter-track"><span class="meter-bar" style="--h:49"></span></span>
+                    <span class="meter-value">238</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="split-main">
+              <div class="dash-card">
+                <div class="card-head">
+                  <h2>Placement Information</h2>
+                  <span class="badge badge--info">Ongoing</span>
+                </div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Company</p><p class="info-value">Brightwave Solutions Inc.</p></div>
+                  <div class="info-item"><p class="info-label">Position</p><p class="info-value">IT Support Intern</p></div>
+                  <div class="info-item"><p class="info-label">Supervisor</p><p class="info-value">Engr. Mark Villanueva</p></div>
+                  <div class="info-item"><p class="info-label">Required Hours</p><p class="info-value">486 hours</p></div>
+                  <div class="info-item"><p class="info-label">Schedule</p><p class="info-value">Mon &ndash; Fri, 8:00 AM &ndash; 5:00 PM</p></div>
+                  <div class="info-item"><p class="info-label">Placement Status</p><p class="info-value">Approved by School</p></div>
+                </div>
+                <div style="margin-top: var(--space-5)">
+                  <div class="progress-meta">
+                    <span class="progress-label">Verified progress</span>
+                    <span class="progress-value">51%</span>
+                  </div>
+                  <div class="progress" data-progress="51"><span class="progress-fill" data-progress-fill></span></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head">
+                  <h2>Recent Activity</h2>
+                  <span class="card-head-note">Timeline</span>
+                </div>
+                <div class="timeline">
+                  <div class="timeline-item is-done">
+                    <p class="timeline-title">Placement approved</p>
+                    <p class="timeline-meta">School validated your placement &middot; 2h ago</p>
+                  </div>
+                  <div class="timeline-item is-done">
+                    <p class="timeline-title">Attendance verified</p>
+                    <p class="timeline-meta">Nov 18 time logs verified &middot; Yesterday</p>
+                  </div>
+                  <div class="timeline-item">
+                    <p class="timeline-title">Requirement revision</p>
+                    <p class="timeline-meta">Medical certificate needs re-upload &middot; 2d ago</p>
+                  </div>
+                  <div class="timeline-item is-done">
+                    <p class="timeline-title">Report approved</p>
+                    <p class="timeline-meta">Week 3 accomplishment report &middot; 4d ago</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Placement ============ -->
+          <section class="dash-section" data-section="placement" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">My Placement</h1>
+                <p class="page-desc">Your confirmed internship placement details, validated by your school coordinator.</p>
+              </div>
+              <span class="badge badge--info">Ongoing</span>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Company Details</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Company Name</p><p class="info-value">Brightwave Solutions Inc.</p></div>
+                  <div class="info-item"><p class="info-label">Industry</p><p class="info-value">Information Technology</p></div>
+                  <div class="info-item"><p class="info-label">Address</p><p class="info-value">Cyber Park Tower, Makati City</p></div>
+                  <div class="info-item"><p class="info-label">Verification</p><p class="info-value">School-verified partner</p></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Internship Terms</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Position</p><p class="info-value">IT Support Intern</p></div>
+                  <div class="info-item"><p class="info-label">Supervisor</p><p class="info-value">Engr. Mark Villanueva</p></div>
+                  <div class="info-item"><p class="info-label">Start Date</p><p class="info-value">October 6, 2026</p></div>
+                  <div class="info-item"><p class="info-label">Target End Date</p><p class="info-value">January 30, 2027</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="card-head">
+                <h2>Hour Completion</h2>
+                <span class="card-head-note">Computed from supervisor-verified attendance</span>
+              </div>
+              <div class="hour-grid">
+                <div class="hour-box"><p class="hour-label">Required Hours</p><p class="hour-value">486</p></div>
+                <div class="hour-box"><p class="hour-label">Verified Hours</p><p class="hour-value">248</p></div>
+                <div class="hour-box"><p class="hour-label">Remaining Hours</p><p class="hour-value">238</p></div>
+              </div>
+              <div class="progress-meta">
+                <span class="progress-label">Overall completion</span>
+                <span class="progress-value">51%</span>
+              </div>
+              <div class="progress" data-progress="51"><span class="progress-fill" data-progress-fill></span></div>
+            </div>
+          </section>
+
+          <!-- ============ Requirements ============ -->
+          <section class="dash-section" data-section="requirements" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Pre-Deployment Requirements</h1>
+                <p class="page-desc">Documents verified by your school coordinator before deployment.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" type="button" data-demo-action="Uploading a requirement">
+                <svg width="16" height="16" style="margin-right:6px"><use href="#i-upload"/></svg> Upload Requirement
+              </button>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Approved</span><span class="stat-icon"><svg><use href="#i-check"/></svg></span></div><p class="stat-value">3</p><p class="stat-foot">Cleared by the coordinator</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Pending Review</span><span class="stat-icon"><svg><use href="#i-clock"/></svg></span></div><p class="stat-value">1</p><p class="stat-foot">Awaiting coordinator review</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Needs Revision</span><span class="stat-icon"><svg><use href="#i-info"/></svg></span></div><p class="stat-value">1</p><p class="stat-foot">Re-upload required</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Completion</span><span class="stat-icon"><svg><use href="#i-target"/></svg></span></div><p class="stat-value">80%</p><p class="stat-foot">4 of 5 submitted</p></article>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Submitted requirements</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Requirement</th>
+                    <th scope="col">Date Submitted</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Remarks</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-strong">Internship Application Form</td>
+                    <td>Sep 12, 2026</td>
+                    <td><span class="badge badge--success">Approved</span></td>
+                    <td class="cell-muted">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Parent&rsquo;s Consent Form</td>
+                    <td>Sep 12, 2026</td>
+                    <td><span class="badge badge--success">Approved</span></td>
+                    <td class="cell-muted">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Medical Certificate</td>
+                    <td>Sep 14, 2026</td>
+                    <td><span class="badge badge--warning">Revision Required</span></td>
+                    <td class="cell-muted">Please upload a clearer copy.</td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Certificate of Enrollment</td>
+                    <td>Sep 14, 2026</td>
+                    <td><span class="badge badge--success">Approved</span></td>
+                    <td class="cell-muted">&mdash;</td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Resume / Curriculum Vitae</td>
+                    <td>Sep 15, 2026</td>
+                    <td><span class="badge badge--info">Pending Verification</span></td>
+                    <td class="cell-muted">Awaiting coordinator review.</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Attendance ============ -->
+          <section class="dash-section" data-section="attendance" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Attendance &amp; Hours</h1>
+                <p class="page-desc">Only supervisor-verified attendance counts toward your official internship hours.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" type="button" data-demo-action="Logging time-in / time-out">Time In / Time Out</button>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Days Present</span><span class="stat-icon"><svg><use href="#i-calendar"/></svg></span></div><p class="stat-value">31</p><p class="stat-foot">Since October 6</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Verified Hours</span><span class="stat-icon"><svg><use href="#i-check"/></svg></span></div><p class="stat-value">248</p><p class="stat-foot">Approved by supervisor</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Pending Hours</span><span class="stat-icon"><svg><use href="#i-clock"/></svg></span></div><p class="stat-value">16</p><p class="stat-foot">Awaiting verification</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Remaining Hours</span><span class="stat-icon"><svg><use href="#i-target"/></svg></span></div><p class="stat-value">238</p><p class="stat-foot">To reach 486 hours</p></article>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head">
+                  <h2>Attendance Density</h2>
+                  <span class="card-head-note">Last 4 weeks</span>
+                </div>
+                <div class="heat">
+                  <span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:1"></span><span class="heat-cell" style="--lvl:0"></span>
+                  <span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:2"></span><span class="heat-cell" style="--lvl:0"></span><span class="heat-cell" style="--lvl:0"></span>
+                  <span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:1"></span><span class="heat-cell" style="--lvl:0"></span>
+                  <span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:2"></span><span class="heat-cell" style="--lvl:0"></span><span class="heat-cell" style="--lvl:1"></span><span class="heat-cell" style="--lvl:0"></span><span class="heat-cell" style="--lvl:0"></span>
+                </div>
+                <div class="heat-axis">
+                  <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+                <div class="heat-legend"><span>Less</span><i></i><i></i><i></i><span>More</span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head">
+                  <h2>Hours Trend</h2>
+                  <span class="card-head-note">Cumulative</span>
+                </div>
+                <svg class="spark" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="spark-area" d="M0,52 L40,44 L80,38 L120,30 L160,24 L200,16 L240,12 L280,8 L300,6 L300,60 L0,60 Z"/>
+                  <path class="spark-line" d="M0,52 L40,44 L80,38 L120,30 L160,24 L200,16 L240,12 L280,8 L300,6"/>
+                </svg>
+                <div class="meter-list" style="margin-top: var(--space-4)">
+                  <div class="meter-row">
+                    <span class="meter-name">On-time arrivals</span>
+                    <span class="meter-track"><span class="meter-bar" style="--h:94"></span></span>
+                    <span class="meter-value">94%</span>
+                  </div>
+                  <div class="meter-row">
+                    <span class="meter-name">Full-day logs</span>
+                    <span class="meter-track"><span class="meter-bar" style="--h:88"></span></span>
+                    <span class="meter-value">88%</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Recent attendance log</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Time In</th>
+                    <th scope="col">Time Out</th>
+                    <th scope="col">Rendered</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="cell-strong">Nov 20, 2026</td><td>8:02 AM</td><td>5:05 PM</td><td>8.0 hrs</td><td><span class="badge badge--warning">Pending Verification</span></td></tr>
+                  <tr><td class="cell-strong">Nov 19, 2026</td><td>7:58 AM</td><td>5:12 PM</td><td>8.2 hrs</td><td><span class="badge badge--warning">Pending Verification</span></td></tr>
+                  <tr><td class="cell-strong">Nov 18, 2026</td><td>8:00 AM</td><td>5:00 PM</td><td>8.0 hrs</td><td><span class="badge badge--success">Verified</span></td></tr>
+                  <tr><td class="cell-strong">Nov 17, 2026</td><td>8:05 AM</td><td>5:10 PM</td><td>8.1 hrs</td><td><span class="badge badge--success">Verified</span></td></tr>
+                  <tr><td class="cell-strong">Nov 14, 2026</td><td>8:00 AM</td><td>4:45 PM</td><td>7.8 hrs</td><td><span class="badge badge--danger">Rejected</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Reports ============ -->
+          <section class="dash-section" data-section="reports" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Accomplishment Reports</h1>
+                <p class="page-desc">Weekly reports reviewed and approved by your company supervisor.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" type="button" data-demo-action="Creating a weekly report">
+                <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> New Weekly Report
+              </button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Weekly accomplishment reports</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Week</th>
+                    <th scope="col">Period</th>
+                    <th scope="col">Submitted</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="cell-strong">Week 7</td><td>Nov 17 &ndash; Nov 21, 2026</td><td>Nov 21, 2026</td><td><span class="badge badge--info">Submitted</span></td></tr>
+                  <tr><td class="cell-strong">Week 6</td><td>Nov 10 &ndash; Nov 14, 2026</td><td>Nov 14, 2026</td><td><span class="badge badge--warning">Under Review</span></td></tr>
+                  <tr><td class="cell-strong">Week 5</td><td>Nov 3 &ndash; Nov 7, 2026</td><td>Nov 7, 2026</td><td><span class="badge badge--success">Approved</span></td></tr>
+                  <tr><td class="cell-strong">Week 4</td><td>Oct 27 &ndash; Oct 31, 2026</td><td>Oct 31, 2026</td><td><span class="badge badge--success">Approved</span></td></tr>
+                  <tr><td class="cell-strong">Week 3</td><td>Oct 20 &ndash; Oct 24, 2026</td><td>Oct 24, 2026</td><td><span class="badge badge--success">Approved</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="callout">
+              <svg><use href="#i-info"/></svg>
+              <span>Reports must be submitted every week. Reports returned for revision appear here with your supervisor&rsquo;s comments.</span>
+            </div>
+          </section>
+
+          <!-- ============ Profile ============ -->
+          <section class="dash-section" data-section="profile" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">My Profile</h1>
+                <p class="page-desc">Your personal and academic information used for internship eligibility.</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Editing your profile">Edit Profile</button>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Personal Information</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Full Name</p><p class="info-value" data-user-name>Student</p></div>
+                  <div class="info-item"><p class="info-label">Student ID</p><p class="info-value" data-user-id>&mdash;</p></div>
+                  <div class="info-item"><p class="info-label">Email</p><p class="info-value" data-user-email>&mdash;</p></div>
+                  <div class="info-item"><p class="info-label">Contact Number</p><p class="info-value">+63 900 000 0000</p></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Academic Information</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Program</p><p class="info-value">BS Information Technology</p></div>
+                  <div class="info-item"><p class="info-label">Year Level</p><p class="info-value">4th Year</p></div>
+                  <div class="info-item"><p class="info-label">Section</p><p class="info-value">BSIT 4-A</p></div>
+                  <div class="info-item"><p class="info-label">Adviser</p><p class="info-value">Prof. Elena Bautista</p></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Notifications ============ -->
+          <section class="dash-section" data-section="notifications" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Notifications</h1>
+                <p class="page-desc">Updates on your requirements, applications, attendance, and reports.</p>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="list">
+                <div class="list-item">
+                  <div class="list-main"><span class="list-title">Placement approved</span><span class="list-sub">Your placement at Brightwave Solutions Inc. was validated by the school coordinator.</span></div>
+                  <span class="list-side"><span class="badge badge--success">Approved</span><span class="cell-muted">2h ago</span></span>
+                </div>
+                <div class="list-item">
+                  <div class="list-main"><span class="list-title">Attendance verified</span><span class="list-sub">Your time logs for November 18, 2026 were verified (8.0 hours).</span></div>
+                  <span class="list-side"><span class="badge badge--success">Verified</span><span class="cell-muted">Yesterday</span></span>
+                </div>
+                <div class="list-item">
+                  <div class="list-main"><span class="list-title">Requirement revision requested</span><span class="list-sub">Your medical certificate needs to be re-uploaded with a clearer scan.</span></div>
+                  <span class="list-side"><span class="badge badge--warning">Action Needed</span><span class="cell-muted">2d ago</span></span>
+                </div>
+                <div class="list-item">
+                  <div class="list-main"><span class="list-title">Weekly report approved</span><span class="list-sub">Week 3 accomplishment report was approved by your supervisor.</span></div>
+                  <span class="list-side"><span class="badge badge--success">Approved</span><span class="cell-muted">4d ago</span></span>
+                </div>
+                <div class="list-item">
+                  <div class="list-main"><span class="list-title">Application accepted</span><span class="list-sub">Brightwave Solutions Inc. accepted your application for IT Support Intern.</span></div>
+                  <span class="list-side"><span class="badge badge--info">Update</span><span class="cell-muted">3w ago</span></span>
+                </div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="dashToast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/access-control.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

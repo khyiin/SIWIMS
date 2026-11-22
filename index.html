@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SIWIMS | Student Internship and Work Immersion Management System</title>
+    <meta
+      name="description"
+      content="A centralized platform that connects students, schools, partner companies, and supervisors to make internship management easier and more organized."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/landing.css" />
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#hero">Skip to content</a>
+
+    <!-- ===================== Ambient backdrop ===================== -->
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
+    <!-- ===================== Navigation ===================== -->
+    <header class="site-header" id="siteHeader">
+      <div class="container nav">
+        <a class="brand" href="index.html" aria-label="SIWIMS home">
+          <span class="brand-mark" aria-hidden="true">SW</span>
+          <span class="brand-name">
+            <strong>SIWIMS</strong>
+            <span>Internship Management</span>
+          </span>
+        </a>
+
+        <nav class="nav-links" id="navLinks" aria-label="Primary">
+          <a href="#hero">Home</a>
+          <a href="#about">About</a>
+          <a href="#features">Features</a>
+          <a href="#contact">Contact</a>
+          <a href="#journey">Journey</a>
+        </nav>
+
+        <button
+          class="nav-toggle"
+          id="navToggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="mobileMenu"
+        >
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+
+      <div class="mobile-menu" id="mobileMenu" hidden>
+        <a href="#hero">Home</a>
+        <a href="#about">About</a>
+        <a href="#features">Features</a>
+        <a href="#contact">Contact</a>
+        <a href="#journey">Internship Journey</a>
+      </div>
+    </header>
+
+    <main>
+      <!-- ===================== Hero ===================== -->
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <span class="eyebrow hero-eyebrow">Internship &amp; Work Immersion</span>
+            <h1 class="display-title">
+              Your Internship Journey,<br />
+              <span class="gradient-text">Organized in One Place.</span>
+            </h1>
+            <p class="hero-lead">
+              A centralized platform that connects students, schools, partner
+              companies, and supervisors to make internship management easier
+              and more organized &mdash; from finding opportunities and
+              submitting applications to monitoring attendance, tracking
+              progress, and completing requirements.
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn btn-accent" href="login.html">Get Started</a>
+            </div>
+
+            <dl class="hero-stats">
+              <div>
+                <dt>Students</dt>
+                <dd>Submit requirements &amp; track hours</dd>
+              </div>
+              <div>
+                <dt>Schools</dt>
+                <dd>Verify &amp; monitor every placement</dd>
+              </div>
+              <div>
+                <dt>Companies</dt>
+                <dd>Publish openings &amp; manage interns</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Decorative product preview graphic -->
+          <div class="hero-visual" aria-hidden="true">
+            <div class="app-window glass">
+              <div class="app-titlebar">
+                <span class="win-dots"><i></i><i></i><i></i></span>
+                <span class="win-title">SIWIMS &middot; Student Dashboard</span>
+              </div>
+              <div class="app-body">
+                <aside class="app-side">
+                  <span class="app-brand"><i></i></span>
+                  <span class="app-nav is-on"></span>
+                  <span class="app-nav"></span>
+                  <span class="app-nav"></span>
+                  <span class="app-nav"></span>
+                </aside>
+                <div class="app-main">
+                  <div class="app-row">
+                    <div class="app-mini">
+                      <span class="app-mini-label">Verified Hours</span>
+                      <span class="app-mini-value">248</span>
+                    </div>
+                    <div class="app-mini">
+                      <span class="app-mini-label">Requirements</span>
+                      <span class="app-mini-value">4/5</span>
+                    </div>
+                  </div>
+                  <div class="app-chart">
+                    <span style="--h: 42%"></span>
+                    <span style="--h: 66%"></span>
+                    <span style="--h: 54%"></span>
+                    <span style="--h: 82%"></span>
+                    <span style="--h: 71%"></span>
+                    <span style="--h: 95%"></span>
+                  </div>
+                  <div class="app-progress">
+                    <span class="app-progress-label">Internship progress</span>
+                    <span class="app-progress-track"><i style="--w: 51%"></i></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="float-chip float-chip--1">
+              <span class="chip-dot"></span>
+              <span><strong>Placement approved</strong>Brightwave Solutions</span>
+            </div>
+
+            <div class="float-chip float-chip--2">
+              <span class="chip-ring">
+                <svg viewBox="0 0 36 36">
+                  <circle cx="18" cy="18" r="15" class="ring-track"></circle>
+                  <circle cx="18" cy="18" r="15" pathLength="100" class="ring-fill" style="--p: 88"></circle>
+                </svg>
+              </span>
+              <span><strong>88% hours</strong>verified by supervisor</span>
+            </div>
+
+            <div class="float-chip float-chip--3">
+              <span class="chip-emoji" aria-hidden="true">&#10003;</span>
+              <span><strong>Requirements</strong>4 of 5 approved</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="container trust-strip" data-reveal>
+          <p class="trust-label">Built for the whole internship ecosystem</p>
+          <ul class="trust-items">
+            <li>Student Portal</li>
+            <li>School Coordinator Desk</li>
+            <li>Partner Company Hub</li>
+            <li>Supervisor Console</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ===================== About ===================== -->
+      <section class="section about" id="about">
+        <div class="container about-grid">
+          <div class="about-copy" data-reveal>
+            <span class="eyebrow">About the System</span>
+            <h2 class="section-title">
+              One platform for the entire internship lifecycle.
+            </h2>
+            <p class="section-subtitle">
+              SIWIMS makes the entire internship process easier, more organized,
+              and more manageable for students, schools, companies, and
+              supervisors. It replaces scattered paperwork and manual follow-ups
+              with one centralized source of truth.
+            </p>
+            <ul class="about-list">
+              <li>
+                <span aria-hidden="true" class="about-tick"></span>
+                Students submit requirements, apply to verified companies, and
+                monitor attendance and completed hours.
+              </li>
+              <li>
+                <span aria-hidden="true" class="about-tick"></span>
+                Companies manage internship opportunities, applicants, and
+                accepted interns.
+              </li>
+              <li>
+                <span aria-hidden="true" class="about-tick"></span>
+                Supervisors verify attendance and provide formal evaluations.
+              </li>
+              <li>
+                <span aria-hidden="true" class="about-tick"></span>
+                Schools monitor every student from application until official
+                completion.
+              </li>
+            </ul>
+          </div>
+
+          <div class="about-visual" data-reveal data-reveal-delay="2">
+            <div class="about-card glass mobile-frame">
+              <div class="frame-notch"></div>
+              <div class="frame-screen">
+                <div class="frame-head">
+                  <span class="frame-avatar">JD</span>
+                  <span class="frame-lines">
+                    <i style="--w: 60%"></i>
+                    <i style="--w: 38%"></i>
+                  </span>
+                </div>
+                <div class="frame-ring-row">
+                  <span class="ring-big">
+                    <svg viewBox="0 0 42 42">
+                      <circle cx="21" cy="21" r="17" class="ring-track"></circle>
+                      <circle cx="21" cy="21" r="17" pathLength="100" class="ring-fill" style="--p: 51"></circle>
+                    </svg>
+                    <b>51%</b>
+                  </span>
+                  <span class="frame-ring-meta">
+                    <i style="--w: 80%"></i>
+                    <i style="--w: 62%"></i>
+                    <i style="--w: 44%"></i>
+                  </span>
+                </div>
+                <div class="frame-pills">
+                  <span class="pill-soft">Approved</span>
+                  <span class="pill-soft">Ongoing</span>
+                  <span class="pill-soft">Verified</span>
+                </div>
+              </div>
+            </div>
+            <div class="about-badge glass">
+              <span class="about-badge-num">486</span>
+              <span class="about-badge-label">required hours tracked automatically</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Features ===================== -->
+      <section class="section features" id="features">
+        <div class="container">
+          <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">Features</span>
+            <h2 class="section-title">
+              Everything You Need for a Better Internship Experience
+            </h2>
+            <p class="section-subtitle">
+              Purpose-built tools for every part of the process, wrapped in one
+              clean and consistent workspace.
+            </p>
+          </div>
+
+          <div class="feature-grid">
+            <article class="feature-card glass lift" data-reveal>
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="7" />
+                  <path d="m20 20-3.2-3.2" />
+                </svg>
+              </span>
+              <h3 class="feature-title">Find Opportunities</h3>
+              <p class="card-text">
+                Explore internship positions from verified partner companies and
+                apply to roles that match your academic background.
+              </p>
+            </article>
+
+            <article class="feature-card glass lift" data-reveal data-reveal-delay="1">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4 19V5" />
+                  <path d="M4 19h16" />
+                  <path d="M8 19v-6" />
+                  <path d="M13 19V9" />
+                  <path d="M18 19v-4" />
+                </svg>
+              </span>
+              <h3 class="feature-title">Track Your Progress</h3>
+              <p class="card-text">
+                Monitor attendance, completed internship hours, remaining hours,
+                and accomplishment reports in real time.
+              </p>
+            </article>
+
+            <article class="feature-card glass lift" data-reveal data-reveal-delay="2">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="6" cy="12" r="2.5" />
+                  <circle cx="18" cy="6" r="2.5" />
+                  <circle cx="18" cy="18" r="2.5" />
+                  <path d="m8.4 10.8 7.2-3.6" />
+                  <path d="m8.4 13.2 7.2 3.6" />
+                </svg>
+              </span>
+              <h3 class="feature-title">Stay Connected</h3>
+              <p class="card-text">
+                Keep students, schools, companies, and supervisors in sync with
+                organized updates and notifications.
+              </p>
+            </article>
+
+            <article class="feature-card glass lift" data-reveal data-reveal-delay="3">
+              <span class="feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3 5 6v5.5c0 4.2 2.9 7.6 7 9.5 4.1-1.9 7-5.3 7-9.5V6z" />
+                  <path d="m9 12 2 2 4-4" />
+                </svg>
+              </span>
+              <h3 class="feature-title">Complete with Confidence</h3>
+              <p class="card-text">
+                Manage requirements, receive supervisor evaluations, and track
+                progress until your internship is officially complete.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== User Roles ===================== -->
+      <section class="section roles" id="roles">
+        <div class="roles-bg" aria-hidden="true">
+          <span class="orb orb--a" style="opacity: 0.35"></span>
+          <span class="orb orb--c" style="opacity: 0.3"></span>
+        </div>
+        <div class="container">
+          <div class="section-head section-head--center" data-reveal>
+            <span class="eyebrow">User Roles</span>
+            <h2 class="section-title">Connecting Everyone in the Internship Process</h2>
+            <p class="section-subtitle">
+              One platform designed to make internship coordination easier for
+              everyone involved.
+            </p>
+          </div>
+
+          <div class="role-grid">
+            <article class="role-card glass--soft" data-reveal>
+              <span class="role-index">01</span>
+              <span class="role-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 8l10 4 10-4z"/><path d="M6 10v5c0 1.7 2.7 3 6 3s6-1.3 6-3v-5"/></svg>
+              </span>
+              <h3 class="role-title">For Students</h3>
+              <p class="card-text">
+                Find opportunities, submit requirements, record attendance, and
+                monitor your internship progress.
+              </p>
+            </article>
+
+            <article class="role-card glass--soft" data-reveal data-reveal-delay="1">
+              <span class="role-index">02</span>
+              <span class="role-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></svg>
+              </span>
+              <h3 class="role-title">For Schools</h3>
+              <p class="card-text">
+                Verify student requirements, manage placements, and monitor every
+                student&rsquo;s internship journey.
+              </p>
+            </article>
+
+            <article class="role-card glass--soft" data-reveal data-reveal-delay="2">
+              <span class="role-index">03</span>
+              <span class="role-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg>
+              </span>
+              <h3 class="role-title">For Companies</h3>
+              <p class="card-text">
+                Publish internship opportunities, review applicants, and manage
+                accepted interns.
+              </p>
+            </article>
+
+            <article class="role-card glass--soft" data-reveal data-reveal-delay="3">
+              <span class="role-index">04</span>
+              <span class="role-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.4"/><path d="M5.5 20a6.5 6.5 0 0 1 13 0"/><path d="m17.5 3 .8 1.7 1.7.8-1.7.8-.8 1.7-.8-1.7-1.7-.8 1.7-.8z"/></svg>
+              </span>
+              <h3 class="role-title">For Supervisors</h3>
+              <p class="card-text">
+                Monitor assigned interns, verify attendance, review reports, and
+                evaluate performance.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- ===================== Internship Journey ===================== -->
+      <section class="section journey" id="journey">
+        <div class="container">
+          <div class="section-head" data-reveal>
+            <span class="eyebrow">Internship Journey</span>
+            <h2 class="section-title">From Application to Completion</h2>
+            <p class="section-subtitle">
+              Make every step of your internship journey more organized. Manage
+              your requirements, stay updated on your progress, and complete your
+              internship with confidence.
+            </p>
+          </div>
+
+          <ol class="timeline">
+            <li class="timeline-item glass" data-reveal>
+              <span class="timeline-marker">1</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Account Registration</h3>
+                <p class="card-text">
+                  Create your account and complete your student or company
+                  profile to get started.
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item glass" data-reveal data-reveal-delay="1">
+              <span class="timeline-marker">2</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Submit Requirements</h3>
+                <p class="card-text">
+                  Upload your pre-deployment documents for school verification.
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item glass" data-reveal data-reveal-delay="2">
+              <span class="timeline-marker">3</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Find and Apply to Opportunities</h3>
+                <p class="card-text">
+                  Browse verified partner companies and submit applications to
+                  positions that match your background.
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item glass" data-reveal data-reveal-delay="3">
+              <span class="timeline-marker">4</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Application Review and Placement</h3>
+                <p class="card-text">
+                  Companies review applicants, and the school validates and
+                  approves your official placement.
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item glass" data-reveal>
+              <span class="timeline-marker">5</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Attendance and Progress Monitoring</h3>
+                <p class="card-text">
+                  Record daily attendance, have hours verified, and watch your
+                  progress update in real time.
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item glass" data-reveal data-reveal-delay="1">
+              <span class="timeline-marker">6</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Accomplishment Reports and Evaluation</h3>
+                <p class="card-text">
+                  Submit weekly reports and receive your supervisor&rsquo;s formal
+                  performance evaluation.
+                </p>
+              </div>
+            </li>
+            <li class="timeline-item glass" data-reveal data-reveal-delay="2">
+              <span class="timeline-marker">7</span>
+              <div class="timeline-body">
+                <h3 class="timeline-title">Internship Completion</h3>
+                <p class="card-text">
+                  Once all requirements are verified, your internship is
+                  officially marked as completed.
+                </p>
+              </div>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <!-- ===================== Contact ===================== -->
+      <section class="section contact" id="contact">
+        <div class="container contact-grid">
+          <div data-reveal>
+            <span class="eyebrow">Contact</span>
+            <h2 class="section-title">Get in touch with the internship office.</h2>
+            <p class="section-subtitle">
+              For questions about internship requirements, partner companies, or
+              your account, reach out to your school&rsquo;s internship
+              coordinator.
+            </p>
+          </div>
+
+          <div class="contact-cards">
+            <div class="contact-card glass" data-reveal>
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11Z"/><circle cx="12" cy="10" r="2.6"/></svg>
+              </span>
+              <h3 class="card-title">Internship Office</h3>
+              <p class="card-text">Office location to be confirmed.</p>
+            </div>
+            <div class="contact-card glass" data-reveal data-reveal-delay="1">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg>
+              </span>
+              <h3 class="card-title">Email</h3>
+              <p class="card-text">internship.office@example.edu</p>
+            </div>
+            <div class="contact-card glass" data-reveal data-reveal-delay="2">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l1.5 4.5L7.5 10a12 12 0 0 0 6.5 6.5l1.5-2L20 16v3a1.5 1.5 0 0 1-1.6 1.5A15.5 15.5 0 0 1 3.5 5.6 1.5 1.5 0 0 1 5 4Z"/></svg>
+              </span>
+              <h3 class="card-title">Telephone</h3>
+              <p class="card-text">(000) 000-0000</p>
+            </div>
+            <div class="contact-card glass" data-reveal data-reveal-delay="3">
+              <span class="contact-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+              </span>
+              <h3 class="card-title">Office Hours</h3>
+              <p class="card-text">Monday to Friday, 8:00 AM &ndash; 5:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ===================== Footer ===================== -->
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div class="footer-brand">
+          <a class="brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">SW</span>
+            <span class="brand-name">
+              <strong>SIWIMS</strong>
+              <span>Internship Management</span>
+            </span>
+          </a>
+          <p class="footer-desc">
+            The Student Internship and Work Immersion Management System
+            centralizes requirements, applications, placements, attendance, and
+            evaluations into one organized platform.
+          </p>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-heading">Quick Links</h3>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#features">Features</a></li>
+            <li><a href="#journey">Internship Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-heading">Get Started</h3>
+          <ul>
+            <li><a href="register.html">Create an Account</a></li>
+            <li><a href="login.html">Log In</a></li>
+            <li><a href="register.html">Student Registration</a></li>
+            <li><a href="register.html">Partner Registration</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3 class="footer-heading">Contact</h3>
+          <ul>
+            <li>Internship Office</li>
+            <li>internship.office@example.edu</li>
+            <li>(000) 000-0000</li>
+            <li>Monday &ndash; Friday, 8:00 AM &ndash; 5:00 PM</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <p>&copy; <span id="footerYear">2026</span> SIWIMS. All rights reserved.</p>
+        <p class="footer-note">Frontend prototype &middot; Account registration enabled</p>
+      </div>
+    </footer>
+
+    <script src="js/landing.js"></script>
+  </body>
+</html>

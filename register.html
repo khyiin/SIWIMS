@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account | SIWIMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/login.css" />
+  </head>
+  <body class="login-body">
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
+    <main class="login-shell">
+      <!-- ==================== Brand panel ==================== -->
+      <section class="login-aside" aria-label="About SIWIMS">
+        <img
+          class="login-aside-image"
+          src="assets/images/login-side.jpg"
+          alt="Minimal modern workspace with a laptop and notebook"
+        />
+        <div class="login-aside-overlay">
+          <a class="brand login-brand" href="index.html">
+            <span class="brand-mark" aria-hidden="true">SW</span>
+            <span class="brand-name">
+              <strong>SIWIMS</strong>
+              <span>Internship Management</span>
+            </span>
+          </a>
+
+          <div class="login-aside-copy">
+            <h2>Start your internship journey in one account.</h2>
+            <p>
+              Create a single account to manage requirements, applications,
+              placement, attendance, and evaluations from start to completion.
+            </p>
+          </div>
+
+          <ul class="login-aside-points">
+            <li>Choose the role that fits you</li>
+            <li>Track every requirement and hour</li>
+            <li>Stay connected with school and company</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ==================== Form panel ==================== -->
+      <section class="login-main">
+        <div class="login-card login-card--wide glass glass--strong">
+          <a class="login-back" href="index.html">
+            <span aria-hidden="true">&larr;</span> Back to Homepage
+          </a>
+
+          <header class="login-header">
+            <span class="brand login-mobile-brand">
+              <span class="brand-mark" aria-hidden="true">SW</span>
+              <span class="brand-name"><strong>SIWIMS</strong></span>
+            </span>
+            <h1 class="login-title">Create your account</h1>
+            <p class="login-subtitle">
+              Fill in your details to get started. All fields marked with
+              <span class="req-dot" aria-hidden="true">*</span> are required.
+            </p>
+          </header>
+
+          <div
+            id="registerAlert"
+            class="alert alert--error"
+            role="alert"
+            aria-live="polite"
+            hidden
+          >
+            <span id="registerAlertText"></span>
+          </div>
+
+          <form id="registerForm" class="login-form" novalidate>
+            <!-- Role picker -->
+            <div class="form-field">
+              <span class="form-label" id="roleLabel">
+                I am a <span class="req-dot" aria-hidden="true">*</span>
+              </span>
+              <div class="role-picker" role="radiogroup" aria-labelledby="roleLabel">
+                <label class="role-option">
+                  <input type="radio" name="role" value="student" />
+                  <span class="role-option-body">
+                    <span class="role-option-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4 2 9l10 5 10-5-10-5Z"/><path d="M6 11v5c0 1 2.7 2.5 6 2.5s6-1.5 6-2.5v-5"/></svg>
+                    </span>
+                    <span class="role-option-text">
+                      <strong>Student</strong>
+                      <small>Intern / Work immersion</small>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="role-option">
+                  <input type="radio" name="role" value="coordinator" />
+                  <span class="role-option-body">
+                    <span class="role-option-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 2v4M16 2v4M3 10h18"/><path d="M9 15l2 2 4-4"/></svg>
+                    </span>
+                    <span class="role-option-text">
+                      <strong>Coordinator</strong>
+                      <small>School internship office</small>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="role-option">
+                  <input type="radio" name="role" value="company" />
+                  <span class="role-option-body">
+                    <span class="role-option-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></svg>
+                    </span>
+                    <span class="role-option-text">
+                      <strong>Company</strong>
+                      <small>Partner organization</small>
+                    </span>
+                  </span>
+                </label>
+
+                <label class="role-option">
+                  <input type="radio" name="role" value="supervisor" />
+                  <span class="role-option-body">
+                    <span class="role-option-icon" aria-hidden="true">
+                      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.5 5.5L20 9.5l-4 4 1 6-5-2.8L7 19.5l1-6-4-4 5.5-1z"/></svg>
+                    </span>
+                    <span class="role-option-text">
+                      <strong>Supervisor</strong>
+                      <small>Company site mentor</small>
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <p class="form-error" id="roleError" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="fullName">
+                Full Name <span class="req-dot" aria-hidden="true">*</span>
+              </label>
+              <input
+                class="form-control"
+                type="text"
+                id="fullName"
+                name="fullName"
+                autocomplete="name"
+                placeholder="e.g. Juan Dela Cruz"
+                aria-describedby="fullNameError"
+                required
+              />
+              <p class="form-error" id="fullNameError" aria-live="polite"></p>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-field">
+                <label class="form-label" for="username">
+                  Username <span class="req-dot" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="username"
+                  name="username"
+                  autocomplete="username"
+                  placeholder="e.g. juan.dc"
+                  aria-describedby="usernameError"
+                  required
+                />
+                <p class="form-error" id="usernameError" aria-live="polite"></p>
+              </div>
+
+              <div class="form-field">
+                <label class="form-label" for="email">
+                  Email Address <span class="req-dot" aria-hidden="true">*</span>
+                </label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="email"
+                  name="email"
+                  autocomplete="email"
+                  placeholder="name@siwims.edu"
+                  aria-describedby="emailError"
+                  required
+                />
+                <p class="form-error" id="emailError" aria-live="polite"></p>
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="affiliation" id="affiliationLabel">
+                Institution / Organization
+              </label>
+              <input
+                class="form-control"
+                type="text"
+                id="affiliation"
+                name="affiliation"
+                placeholder="Optional"
+                aria-describedby="affiliationError"
+              />
+              <p class="form-error" id="affiliationError" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="password">
+                Password <span class="req-dot" aria-hidden="true">*</span>
+              </label>
+              <div class="password-wrap">
+                <input
+                  class="form-control"
+                  type="password"
+                  id="password"
+                  name="password"
+                  autocomplete="new-password"
+                  placeholder="At least 8 characters"
+                  aria-describedby="passwordError pwStrengthText"
+                  required
+                />
+                <button
+                  class="password-toggle"
+                  type="button"
+                  data-toggle-password="password"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+                  <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M3 3l18 18"/><path d="M10.6 6.2A9.7 9.7 0 0 1 12 6c6.4 0 10 6 10 6a17 17 0 0 1-3.3 3.9"/><path d="M6.3 7.5A16.6 16.6 0 0 0 2 12s3.6 6 10 6a9.6 9.6 0 0 0 3.7-.7"/></svg>
+                </button>
+              </div>
+              <div class="pw-meter" id="pwMeter" aria-hidden="true">
+                <span class="pw-meter-track"><span class="pw-meter-bar" id="pwMeterBar"></span></span>
+              </div>
+              <p class="form-hint" id="pwStrengthText">Use 8+ characters with a letter and a number.</p>
+              <p class="form-error" id="passwordError" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label" for="confirmPassword">
+                Confirm Password <span class="req-dot" aria-hidden="true">*</span>
+              </label>
+              <div class="password-wrap">
+                <input
+                  class="form-control"
+                  type="password"
+                  id="confirmPassword"
+                  name="confirmPassword"
+                  autocomplete="new-password"
+                  placeholder="Re-enter your password"
+                  aria-describedby="confirmPasswordError"
+                  required
+                />
+                <button
+                  class="password-toggle"
+                  type="button"
+                  data-toggle-password="confirmPassword"
+                  aria-label="Show password"
+                  aria-pressed="false"
+                >
+                  <svg class="icon-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3.6-6 10-6 10 6 10 6-3.6 6-10 6-10-6-10-6Z"/><circle cx="12" cy="12" r="2.6"/></svg>
+                  <svg class="icon-eye-off" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden><path d="M3 3l18 18"/><path d="M10.6 6.2A9.7 9.7 0 0 1 12 6c6.4 0 10 6 10 6a17 17 0 0 1-3.3 3.9"/><path d="M6.3 7.5A16.6 16.6 0 0 0 2 12s3.6 6 10 6a9.6 9.6 0 0 0 3.7-.7"/></svg>
+                </button>
+              </div>
+              <p class="form-error" id="confirmPasswordError" aria-live="polite"></p>
+            </div>
+
+            <div class="form-field">
+              <label class="checkbox checkbox--terms">
+                <input type="checkbox" id="terms" name="terms" aria-describedby="termsError" />
+                <span>
+                  I agree to the
+                  <a class="btn-link" href="#" id="termsLink">Terms of Use</a> and
+                  <a class="btn-link" href="#" id="privacyLink">Privacy Policy</a>.
+                </span>
+              </label>
+              <p class="form-error" id="termsError" aria-live="polite"></p>
+            </div>
+
+            <button class="btn btn-primary login-submit" type="submit" id="registerSubmit">
+              Create Account
+            </button>
+          </form>
+
+          <p class="login-signup">
+            Already have an account?
+            <a class="btn-link" href="login.html">Log in</a>
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script src="js/auth.js"></script>
+    <script src="js/register.js"></script>
+  </body>
+</html>

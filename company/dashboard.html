@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Company Dashboard | SIWIMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="dashboard" data-role="company">
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
+    <!-- Shared icon sprite -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6"/><path d="M17.5 20a5.5 5.5 0 0 0-3-4.9"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9z"/><path d="M8 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H16"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></symbol>
+        <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 19v-6M13 19V9M18 19v-4"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20z"/><path d="M12 9v5M12 17h.01"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15V10a6 6 0 1 0-12 0v5l-1.5 3h15z"/><path d="M10 21a2 2 0 0 0 4 0"/></symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h2.5A1.5 1.5 0 0 1 19 5.5v13a1.5 1.5 0 0 1-1.5 1.5H15"/><path d="M10 8l-4 4 4 4"/><path d="M6 12h9"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 5-5 3.5 3.5L21 6"/><path d="M15 6h6v6"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="dash-layout">
+      <!-- ==================== Sidebar ==================== -->
+      <aside class="dash-sidebar" id="dashSidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">SW</span>
+          <span class="brand-name"><strong>SIWIMS</strong><span>Internship Management</span></span>
+        </a>
+
+        <nav class="side-nav" aria-label="Company navigation">
+          <p class="side-group-label">Overview</p>
+          <a class="side-link" href="#overview" data-nav="overview" data-title="Company Overview"><svg><use href="#i-grid"/></svg> Dashboard</a>
+
+          <p class="side-group-label">Internship Program</p>
+          <a class="side-link" href="#opportunities" data-nav="opportunities" data-title="Internship Opportunities"><svg><use href="#i-briefcase"/></svg> Opportunities</a>
+          <a class="side-link" href="#applicants" data-nav="applicants" data-title="Applicants"><svg><use href="#i-clipboard"/></svg> Applicants <span class="side-count">14</span></a>
+          <a class="side-link" href="#interns" data-nav="interns" data-title="Accepted Interns"><svg><use href="#i-users"/></svg> Accepted Interns</a>
+          <a class="side-link" href="#supervisors" data-nav="supervisors" data-title="Supervisor Assignment"><svg><use href="#i-user"/></svg> Supervisors</a>
+
+          <p class="side-group-label">Account</p>
+          <a class="side-link" href="#profile" data-nav="profile" data-title="Company Profile"><svg><use href="#i-building"/></svg> Company Profile</a>
+          <a class="side-link" href="#notifications" data-nav="notifications" data-title="Notifications"><svg><use href="#i-bell"/></svg> Notifications</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <span class="avatar" data-user-initials>BS</span>
+            <span class="user-meta"><strong data-user-name>Company</strong><span data-user-role>Company</span></span>
+          </div>
+          <button class="btn-logout" type="button" data-action="logout"><svg><use href="#i-logout"/></svg> Log Out</button>
+        </div>
+      </aside>
+
+      <!-- ==================== Main ==================== -->
+      <div class="dash-main">
+        <header class="dash-topbar">
+          <div class="topbar-left">
+            <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle sidebar"><svg width="18" height="18"><use href="#i-menu"/></svg></button>
+            <div class="breadcrumb">
+              <span class="crumb-role">Partner Company</span>
+              <span class="crumb-title" data-page-title>Company Overview</span>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-btn" id="notifToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notifPanel">
+              <svg><use href="#i-bell"/></svg><span class="notif-count" data-notif-count hidden></span>
+            </button>
+            <div class="topbar-user">
+              <span class="avatar avatar--light" data-user-initials>BS</span>
+              <span class="user-meta"><strong data-user-name>Company</strong><span data-user-role>Company</span></span>
+            </div>
+          </div>
+          <div class="notif-panel" id="notifPanel" hidden>
+            <div class="notif-panel-head"><span>Notifications</span><span class="card-head-note">2 unread</span></div>
+            <div class="notif-list">
+              <div class="notif-item" data-notif-unread><span class="notif-dot"></span><div><span class="notif-title">5 new applicants</span>New applications received for IT Support Intern.<span class="notif-time">2 hours ago</span></div></div>
+              <div class="notif-item" data-notif-unread><span class="notif-dot"></span><div><span class="notif-title">Placement validated</span>The school approved a placement for Mark Lim.<span class="notif-time">5 hours ago</span></div></div>
+              <div class="notif-item"><span class="notif-dot" style="background: var(--color-border)"></span><div><span class="notif-title">Company profile verified</span>Your company accreditation is active.<span class="notif-time">1 week ago</span></div></div>
+            </div>
+          </div>
+        </header>
+
+        <main class="dash-content">
+          <!-- ============ Overview ============ -->
+          <section class="dash-section" data-section="overview">
+            <div class="hero-panel">
+              <div class="hero-layout">
+                <div>
+                  <span class="hero-eyebrow">Company Internship Program</span>
+                  <h1>Welcome, <span data-user-name>Company</span>.</h1>
+                  <p>
+                    Publish internship opportunities, review student applicants,
+                    and keep your accepted interns moving toward completion.
+                  </p>
+                  <div class="hero-stats">
+                    <div class="hero-stat"><strong>4</strong><span>Postings</span></div>
+                    <div class="hero-stat"><strong>14</strong><span>Applicants</span></div>
+                    <div class="hero-stat"><strong>7</strong><span>Interns</span></div>
+                    <div class="hero-stat"><strong>5</strong><span>Open slots</span></div>
+                  </div>
+                  <div class="hero-actions">
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Creating an opportunity">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> Post Opportunity
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing applicants">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-clipboard"/></svg> Review Applicants
+                    </button>
+                  </div>
+                </div>
+                <div class="dash-card" style="width: 340px">
+                  <div class="card-head" style="margin-bottom: var(--space-2)"><h2>Applicants per Posting</h2></div>
+                  <div class="bar-chart" style="height: 128px">
+                    <div class="bar" title="IT Support Intern &middot; 8 applicants"><i style="--h:100"></i><span>IT</span></div>
+                    <div class="bar" title="QA Intern &middot; 4 applicants"><i style="--h:50"></i><span>QA</span></div>
+                    <div class="bar" title="Network Associate &middot; 2 applicants"><i style="--h:25"></i><span>Net</span></div>
+                    <div class="bar" title="Data Encoding &middot; 0 applicants"><i style="--h:8"></i><span>Data</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Available Opportunities</span><span class="stat-icon"><svg><use href="#i-briefcase"/></svg></span></div><p class="stat-value">4</p><p class="stat-foot">3 active &middot; 1 draft</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Current Applicants</span><span class="stat-icon"><svg><use href="#i-clipboard"/></svg></span></div><p class="stat-value">14</p><p class="stat-foot">5 awaiting your review</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Accepted Interns</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div><p class="stat-value">7</p><p class="stat-foot">6 currently deployed</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Open Slots</span><span class="stat-icon"><svg><use href="#i-target"/></svg></span></div><p class="stat-value">5</p><p class="stat-foot">Across all postings</p></article>
+            </div>
+
+            <div class="split-main">
+              <div class="dash-card">
+                <div class="card-head"><h2>New Applicants</h2><span class="card-head-note">Requires review</span></div>
+                <div class="list">
+                  <div class="list-item">
+                    <span class="list-avatar">AR</span>
+                    <div class="list-main"><span class="list-title">Ana Reyes</span><span class="list-sub">BSIT &middot; IT Support Intern</span></div>
+                    <span class="list-side"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Accepting an applicant">Accept</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting an applicant">Reject</button></span>
+                  </div>
+                  <div class="list-item">
+                    <span class="list-avatar">MD</span>
+                    <div class="list-main"><span class="list-title">Marco Diaz</span><span class="list-sub">BSIT &middot; QA Intern</span></div>
+                    <span class="list-side"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Accepting an applicant">Accept</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting an applicant">Reject</button></span>
+                  </div>
+                  <div class="list-item">
+                    <span class="list-avatar">RC</span>
+                    <div class="list-main"><span class="list-title">Rhea Cortez</span><span class="list-sub">BSIS &middot; IT Support Intern</span></div>
+                    <span class="list-side"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Accepting an applicant">Accept</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting an applicant">Reject</button></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Company Profile</h2><span class="badge badge--success">Verified</span></div>
+                <div class="info-grid" style="grid-template-columns: 1fr">
+                  <div class="info-item"><p class="info-label">Company Name</p><p class="info-value">Brightwave Solutions Inc.</p></div>
+                  <div class="info-item"><p class="info-label">Industry</p><p class="info-value">Information Technology</p></div>
+                  <div class="info-item"><p class="info-label">HR Contact</p><p class="info-value" data-user-name>Company</p></div>
+                  <div class="info-item"><p class="info-label">Accreditation</p><p class="info-value">School-verified partner</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-1-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Openings Fill Rate</h2><span class="card-head-note">All postings</span></div>
+                <div class="meter-list">
+                  <div class="meter-row"><span class="meter-name">IT Support Intern</span><span class="meter-track"><span class="meter-bar" style="--h:100"></span></span><span class="meter-value">3/3</span></div>
+                  <div class="meter-row"><span class="meter-name">QA Intern</span><span class="meter-track"><span class="meter-bar" style="--h:50"></span></span><span class="meter-value">1/2</span></div>
+                  <div class="meter-row"><span class="meter-name">Network Associate</span><span class="meter-track"><span class="meter-bar" style="--h:50"></span></span><span class="meter-value">1/2</span></div>
+                  <div class="meter-row"><span class="meter-name">Data Encoding</span><span class="meter-track"><span class="meter-bar" style="--h:0"></span></span><span class="meter-value">0/1</span></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Hiring Pipeline</h2><span class="card-head-note">This term</span></div>
+                <div class="funnel">
+                  <div class="funnel-row"><span class="funnel-label">Applied</span><span class="funnel-track"><span class="funnel-bar" style="--h:100">14</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Screened</span><span class="funnel-track"><span class="funnel-bar" style="--h:79">11</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Interviewed</span><span class="funnel-track"><span class="funnel-bar" style="--h:64">9</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Offered</span><span class="funnel-track"><span class="funnel-bar" style="--h:50">7</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Onboarded</span><span class="funnel-track"><span class="funnel-bar" style="--h:43">6</span></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="card-head"><h2>Applicant Board</h2><span class="card-head-note">Live pipeline</span></div>
+              <div class="kanban">
+                <div class="kanban-col">
+                  <div class="kanban-col-head"><span>New Applications</span><span class="kanban-count">5</span></div>
+                  <div class="kanban-card"><p class="kanban-title">Ana Reyes</p><p class="kanban-meta">BSIT &middot; IT Support Intern</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Rhea Cortez</p><p class="kanban-meta">BSIS &middot; IT Support Intern</p></div>
+                </div>
+                <div class="kanban-col">
+                  <div class="kanban-col-head"><span>In Review</span><span class="kanban-count">3</span></div>
+                  <div class="kanban-card"><p class="kanban-title">Marco Diaz</p><p class="kanban-meta">BSIT &middot; QA Intern</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Nina Santos</p><p class="kanban-meta">BSIT &middot; QA Intern</p></div>
+                </div>
+                <div class="kanban-col">
+                  <div class="kanban-col-head"><span>Accepted</span><span class="kanban-count">7</span></div>
+                  <div class="kanban-card"><p class="kanban-title">Mark Lim</p><p class="kanban-meta">Network Associate Trainee</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Juan Dela Cruz</p><p class="kanban-meta">IT Support Intern</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Applications Trend</h2><span class="card-head-note">Last 8 weeks</span></div>
+                <svg class="spark" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
+                  <path class="spark-area" d="M0,44 L37,38 L74,42 L111,30 L148,34 L185,22 L222,26 L259,14 L300,10 L300,60 L0,60 Z"/>
+                  <path class="spark-line" d="M0,44 L37,38 L74,42 L111,30 L148,34 L185,22 L222,26 L259,14 L300,10"/>
+                </svg>
+                <div class="meter-list" style="margin-top: var(--space-4)">
+                  <div class="meter-row"><span class="meter-name">Response rate</span><span class="meter-track"><span class="meter-bar" style="--h:82"></span></span><span class="meter-value">82%</span></div>
+                  <div class="meter-row"><span class="meter-name">Offer acceptance</span><span class="meter-track"><span class="meter-bar" style="--h:78"></span></span><span class="meter-value">78%</span></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Recent Activity</h2><span class="card-head-note">Timeline</span></div>
+                <div class="timeline">
+                  <div class="timeline-item is-done"><p class="timeline-title">Placement validated</p><p class="timeline-meta">School approved Mark Lim &middot; 5h ago</p></div>
+                  <div class="timeline-item is-done"><p class="timeline-title">Applicant accepted</p><p class="timeline-meta">Juan Dela Cruz accepted for IT Support &middot; Yesterday</p></div>
+                  <div class="timeline-item"><p class="timeline-title">Supervisor needed</p><p class="timeline-meta">Paolo Reyes has no assigned supervisor &middot; 1d ago</p></div>
+                  <div class="timeline-item is-done"><p class="timeline-title">Opportunity published</p><p class="timeline-meta">QA Intern posting is now open &middot; 3d ago</p></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Opportunities ============ -->
+          <section class="dash-section" data-section="opportunities" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Internship Opportunities</h1>
+                <p class="page-desc">Create and manage postings, qualifications, slot counts, and availability.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" type="button" data-demo-action="Creating an opportunity"><svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> New Opportunity</button>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Your internship postings</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Position</th>
+                    <th scope="col">Qualification</th>
+                    <th scope="col">Slots</th>
+                    <th scope="col">Applicants</th>
+                    <th scope="col">Availability</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-strong">IT Support Intern</td><td>BSIT / BSIS</td><td>3</td><td>8</td>
+                    <td><span class="badge badge--success">Open</span></td>
+                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">QA Intern</td><td>BSIT</td><td>2</td><td>4</td>
+                    <td><span class="badge badge--success">Open</span></td>
+                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Network Associate Trainee</td><td>BSIT / BSCS</td><td>2</td><td>2</td>
+                    <td><span class="badge badge--neutral">Closed</span></td>
+                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Data Encoding Assistant</td><td>Any IT program</td><td>1</td><td>0</td>
+                    <td><span class="badge badge--warning">Draft</span></td>
+                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Publishing a posting">Publish</button></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Applicants ============ -->
+          <section class="dash-section" data-section="applicants" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Application Review</h1>
+                <p class="page-desc">Review student profiles and accept or reject applications.</p>
+              </div>
+              <span class="badge badge--warning">5 awaiting review</span>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Incoming applicants</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Applicant</th>
+                    <th scope="col">Program</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Applied</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-strong">Ana Reyes</td><td>BSIT</td><td>IT Support Intern</td><td>Sep 20, 2026</td>
+                    <td><span class="badge badge--info">Under Review</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Accepting an applicant">Accept</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting an applicant">Reject</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Marco Diaz</td><td>BSIT</td><td>QA Intern</td><td>Sep 22, 2026</td>
+                    <td><span class="badge badge--info">Under Review</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Accepting an applicant">Accept</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting an applicant">Reject</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Rhea Cortez</td><td>BSIS</td><td>IT Support Intern</td><td>Sep 23, 2026</td>
+                    <td><span class="badge badge--warning">Pending</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Accepting an applicant">Accept</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting an applicant">Reject</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Mark Lim</td><td>BSIT</td><td>Network Associate Trainee</td><td>Sep 18, 2026</td>
+                    <td><span class="badge badge--success">Accepted</span></td>
+                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Viewing an applicant">View</button></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Interns ============ -->
+          <section class="dash-section" data-section="interns" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Accepted Interns</h1>
+                <p class="page-desc">Your active interns, assigned supervisors, and current progress.</p>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Active Interns</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div><p class="stat-value">7</p><p class="stat-foot">Across 3 postings</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Needs Supervisor</span><span class="stat-icon"><svg><use href="#i-alert"/></svg></span></div><p class="stat-value">1</p><p class="stat-foot">Paolo Reyes</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Avg. Progress</span><span class="stat-icon"><svg><use href="#i-trend"/></svg></span></div><p class="stat-value">68%</p><p class="stat-foot">Verified hours</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed</span><span class="stat-icon"><svg><use href="#i-award"/></svg></span></div><p class="stat-value">1</p><p class="stat-foot">Sofia Gomez</p></article>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Active interns roster</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Intern</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Supervisor</th>
+                    <th scope="col">Verified Hours</th>
+                    <th scope="col">Progress</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-strong">Juan Dela Cruz</td><td>IT Support Intern</td><td>Engr. Mark Villanueva</td><td>248 / 486</td>
+                    <td><div class="progress" data-progress="51" style="width: 120px"><span class="progress-fill" data-progress-fill></span></div></td>
+                    <td><span class="badge badge--info">Ongoing</span></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Mark Lim</td><td>Network Associate Trainee</td><td>Engr. Mark Villanueva</td><td>428 / 486</td>
+                    <td><div class="progress" data-progress="88" style="width: 120px"><span class="progress-fill" data-progress-fill></span></div></td>
+                    <td><span class="badge badge--info">Ongoing</span></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Paolo Reyes</td><td>QA Intern</td><td>Unassigned</td><td>160 / 486</td>
+                    <td><div class="progress" data-progress="33" style="width: 120px"><span class="progress-fill" data-progress-fill></span></div></td>
+                    <td><span class="badge badge--warning">Needs Supervisor</span></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Sofia Gomez</td><td>Data Encoding Assistant</td><td>Engr. Mark Villanueva</td><td>486 / 486</td>
+                    <td><div class="progress" data-progress="100" style="width: 120px"><span class="progress-fill" data-progress-fill></span></div></td>
+                    <td><span class="badge badge--success">Completed</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Supervisors ============ -->
+          <section class="dash-section" data-section="supervisors" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Supervisor Assignment</h1>
+                <p class="page-desc">Every accepted intern must be assigned a company supervisor.</p>
+              </div>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Assign a Supervisor</h2></div>
+                <form class="mini-form" onsubmit="return false">
+                  <div>
+                    <label class="field-label" for="assignIntern">Intern</label>
+                    <select id="assignIntern">
+                      <option>Paolo Reyes &mdash; QA Intern</option>
+                      <option>Juan Dela Cruz &mdash; IT Support Intern</option>
+                      <option>Mark Lim &mdash; Network Associate Trainee</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label class="field-label" for="assignSupervisor">Supervisor</label>
+                    <select id="assignSupervisor">
+                      <option>Engr. Mark Villanueva</option>
+                      <option>Ms. Clara Tan</option>
+                      <option>Mr. Anthony Go</option>
+                    </select>
+                  </div>
+                  <button class="btn btn-primary" type="button" data-demo-action="Assigning a supervisor">Assign Supervisor</button>
+                </form>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Company Supervisors</h2></div>
+                <div class="list">
+                  <div class="list-item"><span class="list-avatar">MV</span><div class="list-main"><span class="list-title">Engr. Mark Villanueva</span><span class="list-sub">IT Operations &middot; 3 interns</span></div><span class="list-side"><span class="badge badge--success">Active</span></span></div>
+                  <div class="list-item"><span class="list-avatar">CT</span><div class="list-main"><span class="list-title">Ms. Clara Tan</span><span class="list-sub">Quality Assurance &middot; 1 intern</span></div><span class="list-side"><span class="badge badge--success">Active</span></span></div>
+                  <div class="list-item"><span class="list-avatar">AG</span><div class="list-main"><span class="list-title">Mr. Anthony Go</span><span class="list-sub">Network Team &middot; 0 interns</span></div><span class="list-side"><span class="badge badge--neutral">Available</span></span></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Profile ============ -->
+          <section class="dash-section" data-section="profile" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Company Profile</h1>
+                <p class="page-desc">Your company details submitted for school verification.</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Editing the company profile">Edit Profile</button>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Company Information</h2><span class="badge badge--success">Verified</span></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Company Name</p><p class="info-value">Brightwave Solutions Inc.</p></div>
+                  <div class="info-item"><p class="info-label">Industry</p><p class="info-value">Information Technology</p></div>
+                  <div class="info-item"><p class="info-label">Address</p><p class="info-value">Cyber Park Tower, Makati City</p></div>
+                  <div class="info-item"><p class="info-label">Website</p><p class="info-value">brightwave.example</p></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>HR Contact</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Contact Person</p><p class="info-value" data-user-name>Company</p></div>
+                  <div class="info-item"><p class="info-label">Email</p><p class="info-value" data-user-email>&mdash;</p></div>
+                  <div class="info-item"><p class="info-label">Contact Number</p><p class="info-value">+63 900 000 0000</p></div>
+                  <div class="info-item"><p class="info-label">Accreditation Status</p><p class="info-value">Active</p></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Notifications ============ -->
+          <section class="dash-section" data-section="notifications" hidden>
+            <div class="page-head">
+              <div><h1 class="page-title">Notifications</h1><p class="page-desc">Application and placement updates for your company.</p></div>
+            </div>
+            <div class="dash-card">
+              <div class="list">
+                <div class="list-item"><div class="list-main"><span class="list-title">5 new applicants</span><span class="list-sub">New applications received for IT Support Intern and QA Intern.</span></div><span class="list-side"><span class="badge badge--warning">Action Needed</span><span class="cell-muted">2h ago</span></span></div>
+                <div class="list-item"><div class="list-main"><span class="list-title">Placement validated by school</span><span class="list-sub">Mark Lim&rsquo;s placement is approved. You may begin deployment.</span></div><span class="list-side"><span class="badge badge--success">Approved</span><span class="cell-muted">5h ago</span></span></div>
+                <div class="list-item"><div class="list-main"><span class="list-title">Supervisor assignment needed</span><span class="list-sub">Paolo Reyes has been accepted but has no assigned supervisor.</span></div><span class="list-side"><span class="badge badge--warning">Action Needed</span><span class="cell-muted">1d ago</span></span></div>
+                <div class="list-item"><div class="list-main"><span class="list-title">Company profile verified</span><span class="list-sub">Your accreditation is active and you can publish opportunities.</span></div><span class="list-side"><span class="badge badge--success">Verified</span><span class="cell-muted">1w ago</span></span></div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="dashToast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/access-control.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>

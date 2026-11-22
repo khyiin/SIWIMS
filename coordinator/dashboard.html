@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coordinator Dashboard | SIWIMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="dashboard" data-role="coordinator">
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
+    <!-- Shared icon sprite -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+        <symbol id="i-users" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M3.5 20a5.5 5.5 0 0 1 11 0"/><path d="M16 5.2a3.2 3.2 0 0 1 0 6"/><path d="M17.5 20a5.5 5.5 0 0 0-3-4.9"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9z"/><path d="M8 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H16"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></symbol>
+        <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></symbol>
+        <symbol id="i-chart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19V5"/><path d="M4 19h16"/><path d="M8 19v-6M13 19V9M18 19v-4"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+        <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 2 20h20z"/><path d="M12 9v5M12 17h.01"/></symbol>
+        <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+        <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15V10a6 6 0 1 0-12 0v5l-1.5 3h15z"/><path d="M10 21a2 2 0 0 0 4 0"/></symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h2.5A1.5 1.5 0 0 1 19 5.5v13a1.5 1.5 0 0 1-1.5 1.5H15"/><path d="M10 8l-4 4 4 4"/><path d="M6 12h9"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+        <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+        <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 5-5 3.5 3.5L21 6"/><path d="M15 6h6v6"/></symbol>
+        <symbol id="i-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></symbol>
+        <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></symbol>
+        <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="dash-layout">
+      <!-- ==================== Sidebar ==================== -->
+      <aside class="dash-sidebar" id="dashSidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">SW</span>
+          <span class="brand-name"><strong>SIWIMS</strong><span>Internship Management</span></span>
+        </a>
+
+        <nav class="side-nav" aria-label="Coordinator navigation">
+          <p class="side-group-label">Overview</p>
+          <a class="side-link" href="#overview" data-nav="overview" data-title="Cohort Overview"><svg><use href="#i-grid"/></svg> Dashboard</a>
+
+          <p class="side-group-label">Monitoring</p>
+          <a class="side-link" href="#students" data-nav="students" data-title="Student Records"><svg><use href="#i-users"/></svg> Student Records</a>
+          <a class="side-link" href="#applications" data-nav="applications" data-title="Application Monitoring"><svg><use href="#i-clipboard"/></svg> Applications <span class="side-count">24</span></a>
+          <a class="side-link" href="#placements" data-nav="placements" data-title="Placement Management"><svg><use href="#i-building"/></svg> Placements <span class="side-count">6</span></a>
+          <a class="side-link" href="#requirements" data-nav="requirements" data-title="Requirements Verification"><svg><use href="#i-file"/></svg> Requirements <span class="side-count">11</span></a>
+          <a class="side-link" href="#progress" data-nav="progress" data-title="Internship Progress"><svg><use href="#i-chart"/></svg> Progress Overview</a>
+
+          <p class="side-group-label">Records</p>
+          <a class="side-link" href="#reports" data-nav="reports" data-title="Reports"><svg><use href="#i-target"/></svg> Reports</a>
+          <a class="side-link" href="#notifications" data-nav="notifications" data-title="Notifications"><svg><use href="#i-bell"/></svg> Notifications</a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <span class="avatar" data-user-initials>MS</span>
+            <span class="user-meta"><strong data-user-name>Coordinator</strong><span data-user-role>Coordinator</span></span>
+          </div>
+          <button class="btn-logout" type="button" data-action="logout"><svg><use href="#i-logout"/></svg> Log Out</button>
+        </div>
+      </aside>
+
+      <!-- ==================== Main ==================== -->
+      <div class="dash-main">
+        <header class="dash-topbar">
+          <div class="topbar-left">
+            <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle sidebar"><svg width="18" height="18"><use href="#i-menu"/></svg></button>
+            <div class="breadcrumb">
+              <span class="crumb-role">School / Internship Coordinator</span>
+              <span class="crumb-title" data-page-title>Cohort Overview</span>
+            </div>
+          </div>
+          <div class="topbar-right">
+            <button class="icon-btn" id="notifToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notifPanel">
+              <svg><use href="#i-bell"/></svg><span class="notif-count" data-notif-count hidden></span>
+            </button>
+            <div class="topbar-user">
+              <span class="avatar avatar--light" data-user-initials>MS</span>
+              <span class="user-meta"><strong data-user-name>Coordinator</strong><span data-user-role>Coordinator</span></span>
+            </div>
+          </div>
+          <div class="notif-panel" id="notifPanel" hidden>
+            <div class="notif-panel-head"><span>Notifications</span><span class="card-head-note">2 unread</span></div>
+            <div class="notif-list">
+              <div class="notif-item" data-notif-unread><span class="notif-dot"></span><div><span class="notif-title">6 placements awaiting validation</span>Accepted applications require school approval.<span class="notif-time">1 hour ago</span></div></div>
+              <div class="notif-item" data-notif-unread><span class="notif-dot"></span><div><span class="notif-title">11 requirements pending verification</span>Students submitted new documents.<span class="notif-time">3 hours ago</span></div></div>
+              <div class="notif-item"><span class="notif-dot" style="background: var(--color-border)"></span><div><span class="notif-title">Company verification request</span>Northgate Media submitted accreditation documents.<span class="notif-time">Yesterday</span></div></div>
+            </div>
+          </div>
+        </header>
+
+        <main class="dash-content">
+          <!-- ============ Overview ============ -->
+          <section class="dash-section" data-section="overview">
+            <div class="hero-panel">
+              <div class="hero-layout">
+                <div>
+                  <span class="hero-eyebrow">Internship Oversight</span>
+                  <h1>Internship Cohort Overview</h1>
+                  <p>
+                    Monitor every student from application to official
+                    completion. Validate placements, verify requirements, and
+                    keep the whole cohort on schedule.
+                  </p>
+                  <div class="hero-stats">
+                    <div class="hero-stat"><strong>186</strong><span>Registered</span></div>
+                    <div class="hero-stat"><strong>112</strong><span>Deployed</span></div>
+                    <div class="hero-stat"><strong>6</strong><span>For validation</span></div>
+                    <div class="hero-stat"><strong>38</strong><span>Completed</span></div>
+                  </div>
+                  <div class="hero-actions">
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Exporting records">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-download"/></svg> Export Records
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Publishing an announcement">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> New Announcement
+                    </button>
+                  </div>
+                </div>
+                <div class="ring ring--onDark" data-ring="60">
+                  <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100"/></svg>
+                  <div class="ring-center"><strong>60%</strong><span>Deployed</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Registered Students</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div>
+                <p class="stat-value">186</p><p class="stat-foot">Across 5 programs</p>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Pending Applications</span><span class="stat-icon"><svg><use href="#i-clipboard"/></svg></span></div>
+                <p class="stat-value">24</p><p class="stat-foot"><span class="trend trend--up">&#9650; 3</span> since last week</p>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Currently Deployed</span><span class="stat-icon"><svg><use href="#i-building"/></svg></span></div>
+                <p class="stat-value">112</p><p class="stat-foot">Ongoing internships</p>
+              </article>
+              <article class="stat-card">
+                <div class="stat-top"><span class="stat-label">Completed Internships</span><span class="stat-icon"><svg><use href="#i-target"/></svg></span></div>
+                <p class="stat-value">38</p><p class="stat-foot">Officially certified</p>
+              </article>
+            </div>
+
+            <div class="grid-1-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Cohort by Program</h2><span class="card-head-note">186 students</span></div>
+                <div style="display:flex; justify-content:center; padding: var(--space-2) 0 var(--space-4)">
+                  <div class="donut" style="background: conic-gradient(#aa8439 0 42%, #2f6fb0 42% 70%, #0f9b8e 70% 88%, #7c5cff 88% 100%)">
+                    <div class="donut-center"><strong>186</strong><span>Students</span></div>
+                  </div>
+                </div>
+                <div class="legend">
+                  <div class="legend-item"><span class="legend-dot" style="background:#aa8439"></span> BSIT <span class="legend-value">42%</span></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#2f6fb0"></span> BSBA <span class="legend-value">28%</span></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#0f9b8e"></span> BSED <span class="legend-value">18%</span></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#7c5cff"></span> BSHM <span class="legend-value">12%</span></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Application Pipeline</h2><span class="card-head-note">This term</span></div>
+                <div class="funnel">
+                  <div class="funnel-row"><span class="funnel-label">Applied</span><span class="funnel-track"><span class="funnel-bar" style="--h:100">186</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Screened</span><span class="funnel-track"><span class="funnel-bar" style="--h:81">150</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Accepted</span><span class="funnel-track"><span class="funnel-bar" style="--h:52">96</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Validated</span><span class="funnel-track"><span class="funnel-bar" style="--h:40">74</span></span></div>
+                  <div class="funnel-row"><span class="funnel-label">Deployed</span><span class="funnel-track"><span class="funnel-bar" style="--h:37">68</span></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="card-head"><h2>Verification Pipeline</h2><span class="card-head-note">Live queue</span></div>
+              <div class="kanban">
+                <div class="kanban-col">
+                  <div class="kanban-col-head"><span>Awaiting Verification</span><span class="kanban-count">11</span></div>
+                  <div class="kanban-card"><p class="kanban-title">Ana Reyes</p><p class="kanban-meta">BSIT 4-A &middot; 5 documents</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Luis Cruz</p><p class="kanban-meta">BSBA 4-B &middot; 4 documents</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Marco Diaz</p><p class="kanban-meta">BSIT 4-A &middot; 5 documents</p></div>
+                </div>
+                <div class="kanban-col">
+                  <div class="kanban-col-head"><span>For School Validation</span><span class="kanban-count">6</span></div>
+                  <div class="kanban-card"><p class="kanban-title">Mark Lim</p><p class="kanban-meta">Northgate Media &middot; Production</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Paolo Reyes</p><p class="kanban-meta">Brightwave Solutions &middot; QA</p></div>
+                </div>
+                <div class="kanban-col">
+                  <div class="kanban-col-head"><span>Completed</span><span class="kanban-count">38</span></div>
+                  <div class="kanban-card"><p class="kanban-title">Sofia Gomez</p><p class="kanban-meta">Grand Meridian Hotel &middot; certified</p></div>
+                  <div class="kanban-card"><p class="kanban-title">Rica Delos Santos</p><p class="kanban-meta">Brightwave Solutions &middot; certified</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="split-main">
+              <div class="dash-card">
+                <div class="card-head"><h2>Student Verification Queue</h2><span class="card-head-note">Requires action</span></div>
+                <div class="list">
+                  <div class="list-item">
+                    <span class="list-avatar">AR</span>
+                    <div class="list-main"><span class="list-title">Ana Reyes</span><span class="list-sub">BSIT 4-A &middot; 5 documents submitted</span></div>
+                    <span class="list-side"><span class="badge badge--warning">Pending</span><button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a student">Review</button></span>
+                  </div>
+                  <div class="list-item">
+                    <span class="list-avatar">LC</span>
+                    <div class="list-main"><span class="list-title">Luis Cruz</span><span class="list-sub">BSBA 4-B &middot; 4 documents submitted</span></div>
+                    <span class="list-side"><span class="badge badge--warning">Pending</span><button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a student">Review</button></span>
+                  </div>
+                  <div class="list-item">
+                    <span class="list-avatar">JP</span>
+                    <div class="list-main"><span class="list-title">Jasmine Perez</span><span class="list-sub">BSED 4-C &middot; 3 documents submitted</span></div>
+                    <span class="list-side"><span class="badge badge--danger">Incomplete</span><button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a student">Review</button></span>
+                  </div>
+                  <div class="list-item">
+                    <span class="list-avatar">MD</span>
+                    <div class="list-main"><span class="list-title">Marco Diaz</span><span class="list-sub">BSIT 4-A &middot; 5 documents submitted</span></div>
+                    <span class="list-side"><span class="badge badge--warning">Pending</span><button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a student">Review</button></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Compliance Alerts</h2></div>
+                <div class="callout" style="margin-bottom: var(--space-3)"><svg><use href="#i-alert"/></svg><span><strong>7 students</strong> have missing pre-deployment requirements.</span></div>
+                <div class="callout" style="margin-bottom: var(--space-3)"><svg><use href="#i-alert"/></svg><span><strong>4 interns</strong> are below expected hour progress.</span></div>
+                <div class="callout"><svg><use href="#i-info"/></svg><span><strong>6 placements</strong> are awaiting school validation.</span></div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Students ============ -->
+          <section class="dash-section" data-section="students" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Student Records</h1>
+                <p class="page-desc">Complete student roster with eligibility and internship progress.</p>
+              </div>
+              <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Exporting the student list"><svg width="16" height="16" style="margin-right:6px"><use href="#i-download"/></svg> Export CSV</button>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Eligible Students</span><span class="stat-icon"><svg><use href="#i-check"/></svg></span></div><p class="stat-value">186</p><p class="stat-foot">Cleared for deployment</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">With Placements</span><span class="stat-icon"><svg><use href="#i-building"/></svg></span></div><p class="stat-value">112</p><p class="stat-foot">Currently deployed</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Awaiting Verification</span><span class="stat-icon"><svg><use href="#i-clock"/></svg></span></div><p class="stat-value">24</p><p class="stat-foot">Documents under review</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed</span><span class="stat-icon"><svg><use href="#i-award"/></svg></span></div><p class="stat-value">38</p><p class="stat-foot">Certified this term</p></article>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Registered students</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Student</th>
+                    <th scope="col">Program</th>
+                    <th scope="col">Requirements</th>
+                    <th scope="col">Placement</th>
+                    <th scope="col">Progress</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="cell-strong">Juan Dela Cruz</td><td>BSIT</td><td><span class="badge badge--warning">1 Revision</span></td><td>Brightwave Solutions</td><td>51%</td><td><span class="badge badge--info">Ongoing</span></td></tr>
+                  <tr><td class="cell-strong">Ana Reyes</td><td>BSIT</td><td><span class="badge badge--warning">Pending</span></td><td class="cell-muted">&mdash;</td><td class="cell-muted">&mdash;</td><td><span class="badge badge--warning">Awaiting Verification</span></td></tr>
+                  <tr><td class="cell-strong">Luis Cruz</td><td>BSBA</td><td><span class="badge badge--warning">Pending</span></td><td class="cell-muted">&mdash;</td><td class="cell-muted">&mdash;</td><td><span class="badge badge--warning">Awaiting Verification</span></td></tr>
+                  <tr><td class="cell-strong">Jasmine Perez</td><td>BSED</td><td><span class="badge badge--danger">Incomplete</span></td><td class="cell-muted">&mdash;</td><td class="cell-muted">&mdash;</td><td><span class="badge badge--danger">Revision Required</span></td></tr>
+                  <tr><td class="cell-strong">Mark Lim</td><td>BSIT</td><td><span class="badge badge--success">Approved</span></td><td>Northgate Media</td><td>88%</td><td><span class="badge badge--info">Ongoing</span></td></tr>
+                  <tr><td class="cell-strong">Sofia Gomez</td><td>BSHM</td><td><span class="badge badge--success">Approved</span></td><td>Grand Meridian Hotel</td><td>100%</td><td><span class="badge badge--success">Completed</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Applications ============ -->
+          <section class="dash-section" data-section="applications" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Application Monitoring</h1>
+                <p class="page-desc">Track student applications and their review status across partner companies.</p>
+              </div>
+              <span class="badge badge--info">24 pending</span>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Internship applications</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Student</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Date Applied</th>
+                    <th scope="col">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td class="cell-strong">Ana Reyes</td><td>Brightwave Solutions</td><td>IT Support Intern</td><td>Sep 20, 2026</td><td><span class="badge badge--info">Under Review</span></td></tr>
+                  <tr><td class="cell-strong">Luis Cruz</td><td>Northgate Media</td><td>Marketing Assistant</td><td>Sep 21, 2026</td><td><span class="badge badge--warning">Pending</span></td></tr>
+                  <tr><td class="cell-strong">Mark Lim</td><td>Northgate Media</td><td>Production Intern</td><td>Sep 18, 2026</td><td><span class="badge badge--success">Accepted</span></td></tr>
+                  <tr><td class="cell-strong">Jasmine Perez</td><td>Grand Meridian Hotel</td><td>Front Desk Trainee</td><td>Sep 19, 2026</td><td><span class="badge badge--danger">Rejected</span></td></tr>
+                  <tr><td class="cell-strong">Marco Diaz</td><td>Brightwave Solutions</td><td>QA Intern</td><td>Sep 22, 2026</td><td><span class="badge badge--info">Under Review</span></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Placements ============ -->
+          <section class="dash-section" data-section="placements" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Placement Management</h1>
+                <p class="page-desc">Validate accepted applications before students begin deployment.</p>
+              </div>
+              <span class="badge badge--warning">6 awaiting validation</span>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Placements awaiting validation</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Student</th>
+                    <th scope="col">Company</th>
+                    <th scope="col">Supervisor</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-strong">Mark Lim</td><td>Northgate Media</td><td>Engr. Mark Villanueva</td>
+                    <td><span class="badge badge--warning">Pending School Approval</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Approving a placement">Approve</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Returning a placement">Return</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Sofia Gomez</td><td>Grand Meridian Hotel</td><td>Ms. Clara Tan</td>
+                    <td><span class="badge badge--success">Approved</span></td>
+                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Viewing a placement">View</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Paolo Reyes</td><td>Brightwave Solutions</td><td>Engr. Mark Villanueva</td>
+                    <td><span class="badge badge--warning">Pending School Approval</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Approving a placement">Approve</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Returning a placement">Return</button></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Requirements ============ -->
+          <section class="dash-section" data-section="requirements" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Requirements Verification</h1>
+                <p class="page-desc">Review submitted pre-deployment documents and approve, request revisions, or reject.</p>
+              </div>
+              <span class="badge badge--info">11 pending</span>
+            </div>
+
+            <div class="table-wrap">
+              <table class="data-table">
+                <caption>Documents pending verification</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Student</th>
+                    <th scope="col">Document</th>
+                    <th scope="col">Submitted</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="cell-strong">Juan Dela Cruz</td><td>Medical Certificate</td><td>Sep 14, 2026</td><td><span class="badge badge--warning">Revision Required</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Approving a document">Approve</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Requesting a revision">Request Revision</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Ana Reyes</td><td>Internship Application Form</td><td>Sep 20, 2026</td><td><span class="badge badge--info">Pending Verification</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Approving a document">Approve</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting a document">Reject</button></div></td>
+                  </tr>
+                  <tr>
+                    <td class="cell-strong">Luis Cruz</td><td>Parent&rsquo;s Consent Form</td><td>Sep 21, 2026</td><td><span class="badge badge--info">Pending Verification</span></td>
+                    <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Approving a document">Approve</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting a document">Reject</button></div></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- ============ Progress ============ -->
+          <section class="dash-section" data-section="progress" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Internship Progress Overview</h1>
+                <p class="page-desc">Cohort-wide tracking of verified hours and completion readiness.</p>
+              </div>
+            </div>
+
+            <div class="stat-grid">
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Searching for Placement</span><span class="stat-icon"><svg><use href="#i-search"/></svg></span></div><p class="stat-value">28</p><p class="stat-foot">Verified, ready to apply</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Ongoing</span><span class="stat-icon"><svg><use href="#i-building"/></svg></span></div><p class="stat-value">112</p><p class="stat-foot">Actively deployed</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">For Final Evaluation</span><span class="stat-icon"><svg><use href="#i-clock"/></svg></span></div><p class="stat-value">9</p><p class="stat-foot">Hours nearly complete</p></article>
+              <article class="stat-card"><div class="stat-top"><span class="stat-label">Completed</span><span class="stat-icon"><svg><use href="#i-award"/></svg></span></div><p class="stat-value">38</p><p class="stat-foot">Officially certified</p></article>
+            </div>
+
+            <div class="grid-2">
+              <div class="dash-card">
+                <div class="card-head"><h2>Hour Compliance Monitor</h2><span class="card-head-note">Top progress</span></div>
+                <div class="meter-list">
+                  <div class="meter-row"><span class="meter-name">Sofia Gomez</span><span class="meter-track"><span class="meter-bar" style="--h:100"></span></span><span class="meter-value">100%</span></div>
+                  <div class="meter-row"><span class="meter-name">Mark Lim</span><span class="meter-track"><span class="meter-bar" style="--h:88"></span></span><span class="meter-value">88%</span></div>
+                  <div class="meter-row"><span class="meter-name">Juan Dela Cruz</span><span class="meter-track"><span class="meter-bar" style="--h:51"></span></span><span class="meter-value">51%</span></div>
+                  <div class="meter-row"><span class="meter-name">Paolo Reyes</span><span class="meter-track"><span class="meter-bar" style="--h:33"></span></span><span class="meter-value">33%</span></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Missing Requirements Alerts</h2></div>
+                <div class="list">
+                  <div class="list-item"><div class="list-main"><span class="list-title">Jasmine Perez</span><span class="list-sub">Missing: Medical Certificate, Resume</span></div><span class="list-side"><span class="badge badge--danger">2 missing</span></span></div>
+                  <div class="list-item"><div class="list-main"><span class="list-title">Ana Reyes</span><span class="list-sub">Missing: Certificate of Enrollment</span></div><span class="list-side"><span class="badge badge--warning">1 missing</span></span></div>
+                  <div class="list-item"><div class="list-main"><span class="list-title">Luis Cruz</span><span class="list-sub">Missing: Parent&rsquo;s Consent Form</span></div><span class="list-side"><span class="badge badge--warning">1 missing</span></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="dash-card">
+              <div class="card-head"><h2>Cohort Readiness</h2><span class="card-head-note">Averaged across deployed interns</span></div>
+              <div class="grid-2" style="align-items:center">
+                <svg class="radar" viewBox="0 0 200 190" role="img" aria-label="Cohort readiness radar across five metrics">
+                  <polygon class="radar-grid" points="100,30 166.6,78.4 141.1,156.6 58.9,156.6 33.4,78.4"/>
+                  <polygon class="radar-grid" points="100,53.8 144,85.7 127.1,137.4 72.9,137.4 56,85.7"/>
+                  <polygon class="radar-grid" points="100,76.9 122,92.9 113.6,118.7 86.4,118.7 78,92.9"/>
+                  <line class="radar-axis" x1="100" y1="100" x2="100" y2="30"/>
+                  <line class="radar-axis" x1="100" y1="100" x2="166.6" y2="78.4"/>
+                  <line class="radar-axis" x1="100" y1="100" x2="141.1" y2="156.6"/>
+                  <line class="radar-axis" x1="100" y1="100" x2="58.9" y2="156.6"/>
+                  <line class="radar-axis" x1="100" y1="100" x2="33.4" y2="78.4"/>
+                  <polygon class="radar-shape" points="100,37 149.9,83.8 124.7,134 65.1,148.1 53.4,84.9"/>
+                  <circle class="radar-dot" cx="100" cy="37" r="3"/>
+                  <circle class="radar-dot" cx="149.9" cy="83.8" r="3"/>
+                  <circle class="radar-dot" cx="124.7" cy="134" r="3"/>
+                  <circle class="radar-dot" cx="65.1" cy="148.1" r="3"/>
+                  <circle class="radar-dot" cx="53.4" cy="84.9" r="3"/>
+                  <text class="radar-label" x="100" y="20" text-anchor="middle">Readiness</text>
+                  <text class="radar-label" x="170" y="76" text-anchor="end">Hours</text>
+                  <text class="radar-label" x="145" y="174" text-anchor="middle">Requirements</text>
+                  <text class="radar-label" x="55" y="174" text-anchor="middle">Attendance</text>
+                  <text class="radar-label" x="30" y="76" text-anchor="start">Evaluation</text>
+                </svg>
+                <div class="meter-list">
+                  <div class="meter-row"><span class="meter-name">Requirements complete</span><span class="meter-track"><span class="meter-bar" style="--h:86"></span></span><span class="meter-value">86%</span></div>
+                  <div class="meter-row"><span class="meter-name">On schedule hours</span><span class="meter-track"><span class="meter-bar" style="--h:78"></span></span><span class="meter-value">78%</span></div>
+                  <div class="meter-row"><span class="meter-name">Attendance compliance</span><span class="meter-track"><span class="meter-bar" style="--h:72"></span></span><span class="meter-value">72%</span></div>
+                  <div class="meter-row"><span class="meter-name">Evaluations submitted</span><span class="meter-track"><span class="meter-bar" style="--h:64"></span></span><span class="meter-value">64%</span></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Reports ============ -->
+          <section class="dash-section" data-section="reports" hidden>
+            <div class="page-head">
+              <div>
+                <h1 class="page-title">Reports</h1>
+                <p class="page-desc">Generate summary reports for students, companies, attendance, and completion.</p>
+              </div>
+              <button class="btn btn-primary btn-sm" type="button" data-demo-action="Generating a summary report"><svg width="16" height="16" style="margin-right:6px"><use href="#i-file"/></svg> Generate Summary Report</button>
+            </div>
+
+            <div class="grid-3">
+              <div class="dash-card"><div class="card-head"><h2>Student Report</h2></div><p class="card-text">Roster of all students with eligibility, placement, and progress.</p><button class="btn btn-secondary btn-sm" type="button" style="margin-top: var(--space-4)" data-demo-action="Student report export">Generate</button></div>
+              <div class="dash-card"><div class="card-head"><h2>Company Report</h2></div><p class="card-text">Partner companies, verified openings, and assigned interns.</p><button class="btn btn-secondary btn-sm" type="button" style="margin-top: var(--space-4)" data-demo-action="Company report export">Generate</button></div>
+              <div class="dash-card"><div class="card-head"><h2>Completion Report</h2></div><p class="card-text">Certified completions with verified hours and evaluations.</p><button class="btn btn-secondary btn-sm" type="button" style="margin-top: var(--space-4)" data-demo-action="Completion report export">Generate</button></div>
+            </div>
+          </section>
+
+          <!-- ============ Notifications ============ -->
+          <section class="dash-section" data-section="notifications" hidden>
+            <div class="page-head">
+              <div><h1 class="page-title">Notifications</h1><p class="page-desc">System events requiring coordinator attention.</p></div>
+            </div>
+            <div class="dash-card">
+              <div class="list">
+                <div class="list-item"><div class="list-main"><span class="list-title">6 placements awaiting validation</span><span class="list-sub">Accepted applications require school approval before deployment.</span></div><span class="list-side"><span class="badge badge--warning">Action Needed</span><span class="cell-muted">1h ago</span></span></div>
+                <div class="list-item"><div class="list-main"><span class="list-title">11 requirements pending verification</span><span class="list-sub">Students submitted new pre-deployment documents.</span></div><span class="list-side"><span class="badge badge--warning">Action Needed</span><span class="cell-muted">3h ago</span></span></div>
+                <div class="list-item"><div class="list-main"><span class="list-title">Company verification request</span><span class="list-sub">Northgate Media submitted accreditation documents.</span></div><span class="list-side"><span class="badge badge--info">Update</span><span class="cell-muted">Yesterday</span></span></div>
+                <div class="list-item"><div class="list-main"><span class="list-title">Evaluation submitted</span><span class="list-sub">Supervisor evaluation received for Sofia Gomez.</span></div><span class="list-side"><span class="badge badge--success">Reviewed</span><span class="cell-muted">2d ago</span></span></div>
+              </div>
+            </div>
+          </section>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="dashToast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/access-control.js"></script>
+    <script src="../js/dashboard.js"></script>
+  </body>
+</html>
