@@ -45,6 +45,7 @@
         <symbol id="i-calendar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></symbol>
         <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></symbol>
         <symbol id="i-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4v11"/><path d="m7 10 5 5 5-5"/><path d="M5 20h14"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 16 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol>
       </defs>
     </svg>
 
@@ -113,7 +114,7 @@
           <!-- ============ Overview ============ -->
           <section class="dash-section" data-section="overview">
             <div class="hero-panel">
-              <div class="hero-layout">
+              <div class="focus-hero">
                 <div>
                   <span class="hero-eyebrow">Company Internship Program</span>
                   <h1>Welcome, <span data-user-name>Company</span>.</h1>
@@ -121,12 +122,6 @@
                     Publish internship opportunities, review student applicants,
                     and keep your accepted interns moving toward completion.
                   </p>
-                  <div class="hero-stats">
-                    <div class="hero-stat"><strong>4</strong><span>Postings</span></div>
-                    <div class="hero-stat"><strong>14</strong><span>Applicants</span></div>
-                    <div class="hero-stat"><strong>7</strong><span>Interns</span></div>
-                    <div class="hero-stat"><strong>5</strong><span>Open slots</span></div>
-                  </div>
                   <div class="hero-actions">
                     <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Creating an opportunity">
                       <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> Post Opportunity
@@ -136,23 +131,136 @@
                     </button>
                   </div>
                 </div>
-                <div class="dash-card" style="width: 340px">
-                  <div class="card-head" style="margin-bottom: var(--space-2)"><h2>Applicants per Posting</h2></div>
-                  <div class="bar-chart" style="height: 128px">
-                    <div class="bar" title="IT Support Intern &middot; 8 applicants"><i style="--h:100"></i><span>IT</span></div>
-                    <div class="bar" title="QA Intern &middot; 4 applicants"><i style="--h:50"></i><span>QA</span></div>
-                    <div class="bar" title="Network Associate &middot; 2 applicants"><i style="--h:25"></i><span>Net</span></div>
-                    <div class="bar" title="Data Encoding &middot; 0 applicants"><i style="--h:8"></i><span>Data</span></div>
+                <div class="focus-card">
+                  <span class="focus-card__value">5</span>
+                  <span class="focus-card__label">applicants awaiting your review this week</span>
+                  <div class="focus-card__actions">
+                    <a class="btn btn-secondary btn-sm" href="#applicants" data-nav="applicants" data-title="Applicants">Open Reviewer</a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div class="stat-grid">
-              <article class="stat-card"><div class="stat-top"><span class="stat-label">Available Opportunities</span><span class="stat-icon"><svg><use href="#i-briefcase"/></svg></span></div><p class="stat-value">4</p><p class="stat-foot">3 active &middot; 1 draft</p></article>
-              <article class="stat-card"><div class="stat-top"><span class="stat-label">Current Applicants</span><span class="stat-icon"><svg><use href="#i-clipboard"/></svg></span></div><p class="stat-value">14</p><p class="stat-foot">5 awaiting your review</p></article>
-              <article class="stat-card"><div class="stat-top"><span class="stat-label">Accepted Interns</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div><p class="stat-value">7</p><p class="stat-foot">6 currently deployed</p></article>
-              <article class="stat-card"><div class="stat-top"><span class="stat-label">Open Slots</span><span class="stat-icon"><svg><use href="#i-target"/></svg></span></div><p class="stat-value">5</p><p class="stat-foot">Across all postings</p></article>
+            <div class="kpi-strip">
+              <div class="kpi"><span class="kpi-value">4</span><span class="kpi-label">Opportunities</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">14</span><span class="kpi-label">Applicants</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">7</span><span class="kpi-label">Accepted Interns</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">5</span><span class="kpi-label">Open Slots</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">68%</span><span class="kpi-label">Avg. Intern Progress</span></div>
+            </div>
+
+            <div class="dash-card">
+              <div class="card-head"><h2>Your Internship Postings</h2><span class="card-head-note">3 active &middot; 1 draft</span></div>
+              <div class="posting-board posting-board--media">
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-it-support.jpg" alt="IT Support Intern opportunity" loading="lazy" />
+                    <span class="badge badge--success posting-card__status">Open</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Information Technology</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">IT Support Intern</p>
+                        <p class="posting-card__qual">BSIT / BSIS</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu City &mdash; Cebu IT Park</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>3/3</b>Slots filled</span>
+                      <span><b>8</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Posted Sep 12, 2026</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-qa.jpg" alt="QA Intern opportunity" loading="lazy" />
+                    <span class="badge badge--success posting-card__status">Open</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Quality Assurance</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">QA Intern</p>
+                        <p class="posting-card__qual">BSIT</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu City &mdash; Capitol Site</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>1/2</b>Slots filled</span>
+                      <span><b>4</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Posted Sep 18, 2026</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-network.jpg" alt="Network Associate Trainee opportunity" loading="lazy" />
+                    <span class="badge badge--neutral posting-card__status">Closed</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Network Operations</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">Network Associate Trainee</p>
+                        <p class="posting-card__qual">BSIT / BSCS</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Mandaue City</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>2/2</b>Slots filled</span>
+                      <span><b>2</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Posted Sep 05, 2026</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-data.jpg" alt="Data Encoding Assistant opportunity" loading="lazy" />
+                    <span class="badge badge--warning posting-card__status">Draft</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Data &amp; Analytics</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">Data Encoding Assistant</p>
+                        <p class="posting-card__qual">Any IT program</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Lapu-Lapu City</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>0/1</b>Slots filled</span>
+                      <span><b>0</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Draft &middot; not yet published</p>
+                      <button class="btn btn-primary btn-sm" type="button" data-demo-action="Publishing a posting">Publish</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
             </div>
 
             <div class="split-main">
@@ -178,74 +286,6 @@
               </div>
 
               <div class="dash-card">
-                <div class="card-head"><h2>Company Profile</h2><span class="badge badge--success">Verified</span></div>
-                <div class="info-grid" style="grid-template-columns: 1fr">
-                  <div class="info-item"><p class="info-label">Company Name</p><p class="info-value">Brightwave Solutions Inc.</p></div>
-                  <div class="info-item"><p class="info-label">Industry</p><p class="info-value">Information Technology</p></div>
-                  <div class="info-item"><p class="info-label">HR Contact</p><p class="info-value" data-user-name>Company</p></div>
-                  <div class="info-item"><p class="info-label">Accreditation</p><p class="info-value">School-verified partner</p></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="grid-1-2">
-              <div class="dash-card">
-                <div class="card-head"><h2>Openings Fill Rate</h2><span class="card-head-note">All postings</span></div>
-                <div class="meter-list">
-                  <div class="meter-row"><span class="meter-name">IT Support Intern</span><span class="meter-track"><span class="meter-bar" style="--h:100"></span></span><span class="meter-value">3/3</span></div>
-                  <div class="meter-row"><span class="meter-name">QA Intern</span><span class="meter-track"><span class="meter-bar" style="--h:50"></span></span><span class="meter-value">1/2</span></div>
-                  <div class="meter-row"><span class="meter-name">Network Associate</span><span class="meter-track"><span class="meter-bar" style="--h:50"></span></span><span class="meter-value">1/2</span></div>
-                  <div class="meter-row"><span class="meter-name">Data Encoding</span><span class="meter-track"><span class="meter-bar" style="--h:0"></span></span><span class="meter-value">0/1</span></div>
-                </div>
-              </div>
-
-              <div class="dash-card">
-                <div class="card-head"><h2>Hiring Pipeline</h2><span class="card-head-note">This term</span></div>
-                <div class="funnel">
-                  <div class="funnel-row"><span class="funnel-label">Applied</span><span class="funnel-track"><span class="funnel-bar" style="--h:100">14</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Screened</span><span class="funnel-track"><span class="funnel-bar" style="--h:79">11</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Interviewed</span><span class="funnel-track"><span class="funnel-bar" style="--h:64">9</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Offered</span><span class="funnel-track"><span class="funnel-bar" style="--h:50">7</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Onboarded</span><span class="funnel-track"><span class="funnel-bar" style="--h:43">6</span></span></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="dash-card">
-              <div class="card-head"><h2>Applicant Board</h2><span class="card-head-note">Live pipeline</span></div>
-              <div class="kanban">
-                <div class="kanban-col">
-                  <div class="kanban-col-head"><span>New Applications</span><span class="kanban-count">5</span></div>
-                  <div class="kanban-card"><p class="kanban-title">Ana Reyes</p><p class="kanban-meta">BSIT &middot; IT Support Intern</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Rhea Cortez</p><p class="kanban-meta">BSIS &middot; IT Support Intern</p></div>
-                </div>
-                <div class="kanban-col">
-                  <div class="kanban-col-head"><span>In Review</span><span class="kanban-count">3</span></div>
-                  <div class="kanban-card"><p class="kanban-title">Marco Diaz</p><p class="kanban-meta">BSIT &middot; QA Intern</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Nina Santos</p><p class="kanban-meta">BSIT &middot; QA Intern</p></div>
-                </div>
-                <div class="kanban-col">
-                  <div class="kanban-col-head"><span>Accepted</span><span class="kanban-count">7</span></div>
-                  <div class="kanban-card"><p class="kanban-title">Mark Lim</p><p class="kanban-meta">Network Associate Trainee</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Juan Dela Cruz</p><p class="kanban-meta">IT Support Intern</p></div>
-                </div>
-              </div>
-            </div>
-
-            <div class="grid-2">
-              <div class="dash-card">
-                <div class="card-head"><h2>Applications Trend</h2><span class="card-head-note">Last 8 weeks</span></div>
-                <svg class="spark" viewBox="0 0 300 60" preserveAspectRatio="none" aria-hidden="true">
-                  <path class="spark-area" d="M0,44 L37,38 L74,42 L111,30 L148,34 L185,22 L222,26 L259,14 L300,10 L300,60 L0,60 Z"/>
-                  <path class="spark-line" d="M0,44 L37,38 L74,42 L111,30 L148,34 L185,22 L222,26 L259,14 L300,10"/>
-                </svg>
-                <div class="meter-list" style="margin-top: var(--space-4)">
-                  <div class="meter-row"><span class="meter-name">Response rate</span><span class="meter-track"><span class="meter-bar" style="--h:82"></span></span><span class="meter-value">82%</span></div>
-                  <div class="meter-row"><span class="meter-name">Offer acceptance</span><span class="meter-track"><span class="meter-bar" style="--h:78"></span></span><span class="meter-value">78%</span></div>
-                </div>
-              </div>
-
-              <div class="dash-card">
                 <div class="card-head"><h2>Recent Activity</h2><span class="card-head-note">Timeline</span></div>
                 <div class="timeline">
                   <div class="timeline-item is-done"><p class="timeline-title">Placement validated</p><p class="timeline-meta">School approved Mark Lim &middot; 5h ago</p></div>
@@ -267,43 +307,116 @@
               <button class="btn btn-primary btn-sm" type="button" data-demo-action="Creating an opportunity"><svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> New Opportunity</button>
             </div>
 
-            <div class="table-wrap">
-              <table class="data-table">
-                <caption>Your internship postings</caption>
-                <thead>
-                  <tr>
-                    <th scope="col">Position</th>
-                    <th scope="col">Qualification</th>
-                    <th scope="col">Slots</th>
-                    <th scope="col">Applicants</th>
-                    <th scope="col">Availability</th>
-                    <th scope="col">Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td class="cell-strong">IT Support Intern</td><td>BSIT / BSIS</td><td>3</td><td>8</td>
-                    <td><span class="badge badge--success">Open</span></td>
-                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button></div></td>
-                  </tr>
-                  <tr>
-                    <td class="cell-strong">QA Intern</td><td>BSIT</td><td>2</td><td>4</td>
-                    <td><span class="badge badge--success">Open</span></td>
-                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button></div></td>
-                  </tr>
-                  <tr>
-                    <td class="cell-strong">Network Associate Trainee</td><td>BSIT / BSCS</td><td>2</td><td>2</td>
-                    <td><span class="badge badge--neutral">Closed</span></td>
-                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button></div></td>
-                  </tr>
-                  <tr>
-                    <td class="cell-strong">Data Encoding Assistant</td><td>Any IT program</td><td>1</td><td>0</td>
-                    <td><span class="badge badge--warning">Draft</span></td>
-                    <td><div class="table-actions"><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Publishing a posting">Publish</button></div></td>
-                  </tr>
-                </tbody>
-              </table>
+            <div class="dash-card">
+              <div class="card-head"><h2>Posting Gallery</h2><span class="card-head-note">3 active &middot; 1 draft</span></div>
+              <div class="posting-board posting-board--media">
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-it-support.jpg" alt="IT Support Intern opportunity" loading="lazy" />
+                    <span class="badge badge--success posting-card__status">Open</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Information Technology</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">IT Support Intern</p>
+                        <p class="posting-card__qual">BSIT / BSIS</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu City &mdash; Cebu IT Park</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>3/3</b>Slots filled</span>
+                      <span><b>8</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Posted Sep 12, 2026</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-qa.jpg" alt="QA Intern opportunity" loading="lazy" />
+                    <span class="badge badge--success posting-card__status">Open</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Quality Assurance</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">QA Intern</p>
+                        <p class="posting-card__qual">BSIT</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu City &mdash; Capitol Site</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>1/2</b>Slots filled</span>
+                      <span><b>4</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Posted Sep 18, 2026</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-network.jpg" alt="Network Associate Trainee opportunity" loading="lazy" />
+                    <span class="badge badge--neutral posting-card__status">Closed</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Network Operations</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">Network Associate Trainee</p>
+                        <p class="posting-card__qual">BSIT / BSCS</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Mandaue City</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>2/2</b>Slots filled</span>
+                      <span><b>2</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Posted Sep 05, 2026</p>
+                      <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Editing a posting">Edit</button>
+                    </div>
+                  </div>
+                </article>
+                <article class="posting-card posting-card--media">
+                  <div class="posting-card__media">
+                    <img src="../assets/images/posting-data.jpg" alt="Data Encoding Assistant opportunity" loading="lazy" />
+                    <span class="badge badge--warning posting-card__status">Draft</span>
+                    <span class="posting-card__cat"><svg><use href="#i-briefcase"/></svg> Data &amp; Analytics</span>
+                  </div>
+                  <div class="posting-card__surface">
+                    <div class="posting-card__top">
+                      <div>
+                        <p class="posting-card__title">Data Encoding Assistant</p>
+                        <p class="posting-card__qual">Any IT program</p>
+                      </div>
+                    </div>
+                    <div class="company-card__meta">
+                      <span class="meta-item"><svg><use href="#i-pin"/></svg> Lapu-Lapu City</span>
+                    </div>
+                    <div class="posting-card__meta">
+                      <span><b>0/1</b>Slots filled</span>
+                      <span><b>0</b>Applicants</span>
+                    </div>
+                    <div class="posting-card__foot">
+                      <p class="posting-card__qual">Draft &middot; not yet published</p>
+                      <button class="btn btn-primary btn-sm" type="button" data-demo-action="Publishing a posting">Publish</button>
+                    </div>
+                  </div>
+                </article>
+              </div>
             </div>
+
           </section>
 
           <!-- ============ Applicants ============ -->
@@ -456,21 +569,41 @@
 
           <!-- ============ Profile ============ -->
           <section class="dash-section" data-section="profile" hidden>
-            <div class="page-head">
-              <div>
-                <h1 class="page-title">Company Profile</h1>
-                <p class="page-desc">Your company details submitted for school verification.</p>
+            <div class="profile-hero">
+              <div class="profile-hero__banner">
+                <img src="../assets/images/office-collaboration.jpg" alt="" />
               </div>
-              <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Editing the company profile">Edit Profile</button>
+              <div class="profile-hero__body">
+                <span class="profile-hero__avatar" data-user-initials>BS</span>
+                <div class="profile-hero__id">
+                  <h1>Brightwave Solutions Inc.</h1>
+                  <p class="profile-hero__sub">Information Technology &middot; Cebu IT Park, Lahug, Cebu City</p>
+                  <div class="profile-tags">
+                    <span class="profile-tag"><svg><use href="#i-check"/></svg> School Verified</span>
+                    <span class="profile-tag"><svg><use href="#i-building"/></svg> Partner since 2023</span>
+                    <span class="profile-tag"><svg><use href="#i-briefcase"/></svg> 4 open postings</span>
+                  </div>
+                </div>
+                <div class="profile-hero__actions">
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Editing the company profile">Edit Profile</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Exporting records">Export Records</button>
+                </div>
+              </div>
+              <div class="profile-hero__stats">
+                <div class="profile-stat"><strong>14</strong><span>Applicants</span></div>
+                <div class="profile-stat"><strong>7</strong><span>Active Interns</span></div>
+                <div class="profile-stat"><strong>4</strong><span>Postings</span></div>
+                <div class="profile-stat"><strong>4.8</strong><span>Rating</span></div>
+              </div>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-2" style="margin-top: var(--space-5)">
               <div class="dash-card">
                 <div class="card-head"><h2>Company Information</h2><span class="badge badge--success">Verified</span></div>
                 <div class="info-grid">
                   <div class="info-item"><p class="info-label">Company Name</p><p class="info-value">Brightwave Solutions Inc.</p></div>
                   <div class="info-item"><p class="info-label">Industry</p><p class="info-value">Information Technology</p></div>
-                  <div class="info-item"><p class="info-label">Address</p><p class="info-value">Cyber Park Tower, Makati City</p></div>
+                  <div class="info-item"><p class="info-label">Address</p><p class="info-value">Cebu IT Park, Lahug, Cebu City</p></div>
                   <div class="info-item"><p class="info-label">Website</p><p class="info-value">brightwave.example</p></div>
                 </div>
               </div>

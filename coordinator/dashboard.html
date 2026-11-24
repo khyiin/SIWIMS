@@ -69,6 +69,9 @@
 
           <p class="side-group-label">Records</p>
           <a class="side-link" href="#reports" data-nav="reports" data-title="Reports"><svg><use href="#i-target"/></svg> Reports</a>
+
+          <p class="side-group-label">Account</p>
+          <a class="side-link" href="#profile" data-nav="profile" data-title="My Profile"><svg><use href="#i-user"/></svg> My Profile</a>
           <a class="side-link" href="#notifications" data-nav="notifications" data-title="Notifications"><svg><use href="#i-bell"/></svg> Notifications</a>
         </nav>
 
@@ -113,110 +116,64 @@
         <main class="dash-content">
           <!-- ============ Overview ============ -->
           <section class="dash-section" data-section="overview">
-            <div class="hero-panel">
-              <div class="hero-layout">
-                <div>
-                  <span class="hero-eyebrow">Internship Oversight</span>
-                  <h1>Internship Cohort Overview</h1>
-                  <p>
-                    Monitor every student from application to official
-                    completion. Validate placements, verify requirements, and
-                    keep the whole cohort on schedule.
-                  </p>
-                  <div class="hero-stats">
-                    <div class="hero-stat"><strong>186</strong><span>Registered</span></div>
-                    <div class="hero-stat"><strong>112</strong><span>Deployed</span></div>
-                    <div class="hero-stat"><strong>6</strong><span>For validation</span></div>
-                    <div class="hero-stat"><strong>38</strong><span>Completed</span></div>
-                  </div>
-                  <div class="hero-actions">
-                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Exporting records">
-                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-download"/></svg> Export Records
-                    </button>
-                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Publishing an announcement">
-                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> New Announcement
-                    </button>
-                  </div>
-                </div>
-                <div class="ring ring--onDark" data-ring="60">
-                  <svg viewBox="0 0 120 120"><circle class="ring-track" cx="60" cy="60" r="52"/><circle class="ring-fill" cx="60" cy="60" r="52" pathLength="100"/></svg>
-                  <div class="ring-center"><strong>60%</strong><span>Deployed</span></div>
-                </div>
+            <div class="console">
+              <div>
+                <h1>Internship Cohort Overview</h1>
+                <p class="console-sub">Monitor every student from application to official completion &mdash; validate placements, verify requirements, and keep the whole cohort on schedule.</p>
+              </div>
+              <div class="console-actions">
+                <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Exporting records">
+                  <svg width="16" height="16" style="margin-right:6px"><use href="#i-download"/></svg> Export Records
+                </button>
+                <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Publishing an announcement">
+                  <svg width="16" height="16" style="margin-right:6px"><use href="#i-plus"/></svg> New Announcement
+                </button>
               </div>
             </div>
 
-            <div class="stat-grid">
-              <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Registered Students</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div>
-                <p class="stat-value">186</p><p class="stat-foot">Across 5 programs</p>
-              </article>
-              <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Pending Applications</span><span class="stat-icon"><svg><use href="#i-clipboard"/></svg></span></div>
-                <p class="stat-value">24</p><p class="stat-foot"><span class="trend trend--up">&#9650; 3</span> since last week</p>
-              </article>
-              <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Currently Deployed</span><span class="stat-icon"><svg><use href="#i-building"/></svg></span></div>
-                <p class="stat-value">112</p><p class="stat-foot">Ongoing internships</p>
-              </article>
-              <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Completed Internships</span><span class="stat-icon"><svg><use href="#i-target"/></svg></span></div>
-                <p class="stat-value">38</p><p class="stat-foot">Officially certified</p>
-              </article>
-            </div>
-
-            <div class="grid-1-2">
-              <div class="dash-card">
-                <div class="card-head"><h2>Cohort by Program</h2><span class="card-head-note">186 students</span></div>
-                <div style="display:flex; justify-content:center; padding: var(--space-2) 0 var(--space-4)">
-                  <div class="donut" style="background: conic-gradient(#aa8439 0 42%, #2f6fb0 42% 70%, #0f9b8e 70% 88%, #7c5cff 88% 100%)">
-                    <div class="donut-center"><strong>186</strong><span>Students</span></div>
-                  </div>
-                </div>
-                <div class="legend">
-                  <div class="legend-item"><span class="legend-dot" style="background:#aa8439"></span> BSIT <span class="legend-value">42%</span></div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#2f6fb0"></span> BSBA <span class="legend-value">28%</span></div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#0f9b8e"></span> BSED <span class="legend-value">18%</span></div>
-                  <div class="legend-item"><span class="legend-dot" style="background:#7c5cff"></span> BSHM <span class="legend-value">12%</span></div>
-                </div>
+            <div class="stage-track">
+              <div class="stage" style="--stage-color: rgba(170, 132, 57, 0.35)">
+                <span class="stage-value">186</span>
+                <span class="stage-label">Applied</span>
+                <span class="stage-note">Across 5 programs</span>
               </div>
-
-              <div class="dash-card">
-                <div class="card-head"><h2>Application Pipeline</h2><span class="card-head-note">This term</span></div>
-                <div class="funnel">
-                  <div class="funnel-row"><span class="funnel-label">Applied</span><span class="funnel-track"><span class="funnel-bar" style="--h:100">186</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Screened</span><span class="funnel-track"><span class="funnel-bar" style="--h:81">150</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Accepted</span><span class="funnel-track"><span class="funnel-bar" style="--h:52">96</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Validated</span><span class="funnel-track"><span class="funnel-bar" style="--h:40">74</span></span></div>
-                  <div class="funnel-row"><span class="funnel-label">Deployed</span><span class="funnel-track"><span class="funnel-bar" style="--h:37">68</span></span></div>
-                </div>
+              <div class="stage" style="--stage-color: rgba(170, 132, 57, 0.55)">
+                <span class="stage-value">150</span>
+                <span class="stage-label">Screened</span>
+                <span class="stage-note">Eligibility checked</span>
+              </div>
+              <div class="stage" style="--stage-color: rgba(170, 132, 57, 0.75)">
+                <span class="stage-value">96</span>
+                <span class="stage-label">Accepted</span>
+                <span class="stage-note">By partner companies</span>
+              </div>
+              <div class="stage" style="--stage-color: #aa8439">
+                <span class="stage-value">74</span>
+                <span class="stage-label">Validated</span>
+                <span class="stage-note">Approved by school</span>
+              </div>
+              <div class="stage" style="--stage-color: #8a6a26">
+                <span class="stage-value">68</span>
+                <span class="stage-label">Deployed</span>
+                <span class="stage-note">Ongoing internships</span>
               </div>
             </div>
 
-            <div class="dash-card">
-              <div class="card-head"><h2>Verification Pipeline</h2><span class="card-head-note">Live queue</span></div>
-              <div class="kanban">
-                <div class="kanban-col">
-                  <div class="kanban-col-head"><span>Awaiting Verification</span><span class="kanban-count">11</span></div>
-                  <div class="kanban-card"><p class="kanban-title">Ana Reyes</p><p class="kanban-meta">BSIT 4-A &middot; 5 documents</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Luis Cruz</p><p class="kanban-meta">BSBA 4-B &middot; 4 documents</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Marco Diaz</p><p class="kanban-meta">BSIT 4-A &middot; 5 documents</p></div>
-                </div>
-                <div class="kanban-col">
-                  <div class="kanban-col-head"><span>For School Validation</span><span class="kanban-count">6</span></div>
-                  <div class="kanban-card"><p class="kanban-title">Mark Lim</p><p class="kanban-meta">Northgate Media &middot; Production</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Paolo Reyes</p><p class="kanban-meta">Brightwave Solutions &middot; QA</p></div>
-                </div>
-                <div class="kanban-col">
-                  <div class="kanban-col-head"><span>Completed</span><span class="kanban-count">38</span></div>
-                  <div class="kanban-card"><p class="kanban-title">Sofia Gomez</p><p class="kanban-meta">Grand Meridian Hotel &middot; certified</p></div>
-                  <div class="kanban-card"><p class="kanban-title">Rica Delos Santos</p><p class="kanban-meta">Brightwave Solutions &middot; certified</p></div>
-                </div>
-              </div>
+            <div class="kpi-strip">
+              <div class="kpi"><span class="kpi-value">186</span><span class="kpi-label">Registered Students</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">24</span><span class="kpi-label">Pending Applications</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">112</span><span class="kpi-label">Currently Deployed</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">6</span><span class="kpi-label">For Validation</span></div>
+              <span class="kpi-sep" aria-hidden="true"></span>
+              <div class="kpi"><span class="kpi-value">38</span><span class="kpi-label">Completed</span></div>
             </div>
 
             <div class="split-main">
               <div class="dash-card">
-                <div class="card-head"><h2>Student Verification Queue</h2><span class="card-head-note">Requires action</span></div>
+                <div class="card-head"><h2>Verification Queue</h2><span class="card-head-note">Requires action</span></div>
                 <div class="list">
                   <div class="list-item">
                     <span class="list-avatar">AR</span>
@@ -233,19 +190,14 @@
                     <div class="list-main"><span class="list-title">Jasmine Perez</span><span class="list-sub">BSED 4-C &middot; 3 documents submitted</span></div>
                     <span class="list-side"><span class="badge badge--danger">Incomplete</span><button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a student">Review</button></span>
                   </div>
-                  <div class="list-item">
-                    <span class="list-avatar">MD</span>
-                    <div class="list-main"><span class="list-title">Marco Diaz</span><span class="list-sub">BSIT 4-A &middot; 5 documents submitted</span></div>
-                    <span class="list-side"><span class="badge badge--warning">Pending</span><button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a student">Review</button></span>
-                  </div>
                 </div>
               </div>
 
               <div class="dash-card">
-                <div class="card-head"><h2>Compliance Alerts</h2></div>
-                <div class="callout" style="margin-bottom: var(--space-3)"><svg><use href="#i-alert"/></svg><span><strong>7 students</strong> have missing pre-deployment requirements.</span></div>
-                <div class="callout" style="margin-bottom: var(--space-3)"><svg><use href="#i-alert"/></svg><span><strong>4 interns</strong> are below expected hour progress.</span></div>
-                <div class="callout"><svg><use href="#i-info"/></svg><span><strong>6 placements</strong> are awaiting school validation.</span></div>
+                <div class="card-head"><h2>Needs Your Attention</h2></div>
+                <div class="callout" style="margin-bottom: var(--space-3)"><svg><use href="#i-alert"/></svg><span><strong>6 placements</strong> awaiting school validation.</span></div>
+                <div class="callout" style="margin-bottom: var(--space-3)"><svg><use href="#i-alert"/></svg><span><strong>11 requirements</strong> pending verification.</span></div>
+                <div class="callout"><svg><use href="#i-info"/></svg><span><strong>4 interns</strong> are below expected hour progress.</span></div>
               </div>
             </div>
           </section>
@@ -493,6 +445,59 @@
               <div class="dash-card"><div class="card-head"><h2>Student Report</h2></div><p class="card-text">Roster of all students with eligibility, placement, and progress.</p><button class="btn btn-secondary btn-sm" type="button" style="margin-top: var(--space-4)" data-demo-action="Student report export">Generate</button></div>
               <div class="dash-card"><div class="card-head"><h2>Company Report</h2></div><p class="card-text">Partner companies, verified openings, and assigned interns.</p><button class="btn btn-secondary btn-sm" type="button" style="margin-top: var(--space-4)" data-demo-action="Company report export">Generate</button></div>
               <div class="dash-card"><div class="card-head"><h2>Completion Report</h2></div><p class="card-text">Certified completions with verified hours and evaluations.</p><button class="btn btn-secondary btn-sm" type="button" style="margin-top: var(--space-4)" data-demo-action="Completion report export">Generate</button></div>
+            </div>
+          </section>
+
+          <!-- ============ Profile ============ -->
+          <section class="dash-section" data-section="profile" hidden>
+            <div class="profile-hero">
+              <div class="profile-hero__banner">
+                <img src="../assets/images/campus.jpg" alt="" />
+              </div>
+              <div class="profile-hero__body">
+                <span class="profile-hero__avatar" data-user-initials>MS</span>
+                <div class="profile-hero__id">
+                  <h1 data-user-name>Coordinator</h1>
+                  <p class="profile-hero__sub">Internship Coordinator &middot; College of Computer Studies</p>
+                  <div class="profile-tags">
+                    <span class="profile-tag"><svg><use href="#i-check"/></svg> Verified Account</span>
+                    <span class="profile-tag"><svg><use href="#i-users"/></svg> 32 students handled</span>
+                    <span class="profile-tag"><svg><use href="#i-building"/></svg> 6 partner companies</span>
+                  </div>
+                </div>
+                <div class="profile-hero__actions">
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Editing your profile">Edit Profile</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Exporting records">Export Records</button>
+                </div>
+              </div>
+              <div class="profile-hero__stats">
+                <div class="profile-stat"><strong>32</strong><span>Students</span></div>
+                <div class="profile-stat"><strong>6</strong><span>Placements</span></div>
+                <div class="profile-stat"><strong>11</strong><span>To Verify</span></div>
+                <div class="profile-stat"><strong>4</strong><span>Companies</span></div>
+              </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: var(--space-5)">
+              <div class="dash-card">
+                <div class="card-head"><h2>Account Information</h2><span class="badge badge--success">Active</span></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Full Name</p><p class="info-value" data-user-name>Coordinator</p></div>
+                  <div class="info-item"><p class="info-label">Email</p><p class="info-value" data-user-email>&mdash;</p></div>
+                  <div class="info-item"><p class="info-label">Office</p><p class="info-value">Internship &amp; Placement Office</p></div>
+                  <div class="info-item"><p class="info-label">Contact Number</p><p class="info-value">+63 900 000 0000</p></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Assignment</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Department</p><p class="info-value">College of Computer Studies</p></div>
+                  <div class="info-item"><p class="info-label">Coordinator Since</p><p class="info-value">2022</p></div>
+                  <div class="info-item"><p class="info-label">Advisees</p><p class="info-value">32 students</p></div>
+                  <div class="info-item"><p class="info-label">Campus</p><p class="info-value">Cebu City Campus</p></div>
+                </div>
+              </div>
             </div>
           </section>
 

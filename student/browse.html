@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Browse Companies | SIWIMS</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="../css/dashboard.css" />
+  </head>
+  <body class="dashboard" data-role="student">
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
+    <!-- Shared icon sprite -->
+    <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
+      <defs>
+        <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></symbol>
+        <symbol id="i-building" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21V5a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v16"/><path d="M15 9h3a2 2 0 0 1 2 2v10"/><path d="M8 7h3M8 11h3M8 15h3"/><path d="M3 21h18"/></symbol>
+        <symbol id="i-briefcase" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7.5" width="18" height="12" rx="2"/><path d="M9 7.5V6a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1.5"/><path d="M3 12.5h18"/></symbol>
+        <symbol id="i-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-6.5-5-6.5-10.5a6.5 6.5 0 0 1 13 0C18.5 16 12 21 12 21Z"/><circle cx="12" cy="10.5" r="2.4"/></symbol>
+        <symbol id="i-star" viewBox="0 0 24 24" fill="currentColor"><path d="m12 3.5 2.6 5.3 5.9.9-4.2 4.1 1 5.8L12 16.9 6.7 19.6l1-5.8-4.2-4.1 5.9-.9z"/></symbol>
+        <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
+        <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></symbol>
+        <symbol id="i-clipboard" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6v3H9z"/><path d="M8 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H16"/></symbol>
+        <symbol id="i-file" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></symbol>
+        <symbol id="i-bell" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M18 15V10a6 6 0 1 0-12 0v5l-1.5 3h15z"/><path d="M10 21a2 2 0 0 0 4 0"/></symbol>
+        <symbol id="i-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.5"/><path d="M5 20a7 7 0 0 1 14 0"/></symbol>
+        <symbol id="i-logout" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M15 4h2.5A1.5 1.5 0 0 1 19 5.5v13a1.5 1.5 0 0 1-1.5 1.5H15"/><path d="M10 8l-4 4 4 4"/><path d="M6 12h9"/></symbol>
+        <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h16M4 12h16M4 17h16"/></symbol>
+      </defs>
+    </svg>
+
+    <div class="dash-layout">
+      <!-- ==================== Sidebar ==================== -->
+      <aside class="dash-sidebar" id="dashSidebar">
+        <a class="brand" href="../index.html">
+          <span class="brand-mark" aria-hidden="true">SW</span>
+          <span class="brand-name">
+            <strong>SIWIMS</strong>
+            <span>Internship Management</span>
+          </span>
+        </a>
+
+        <nav class="side-nav" aria-label="Student navigation">
+          <p class="side-group-label">Discover</p>
+          <a class="side-link is-active" href="browse.html" aria-current="page"><svg><use href="#i-search"/></svg> Browse Companies</a>
+          <a class="side-link" href="dashboard.html#overview"><svg><use href="#i-grid"/></svg> Dashboard</a>
+          <a class="side-link" href="dashboard.html#placement"><svg><use href="#i-building"/></svg> My Placement</a>
+
+          <p class="side-group-label">Internship</p>
+          <a class="side-link" href="dashboard.html#requirements"><svg><use href="#i-clipboard"/></svg> Requirements <span class="side-count">1</span></a>
+          <a class="side-link" href="dashboard.html#attendance"><svg><use href="#i-clock"/></svg> Attendance &amp; Hours</a>
+          <a class="side-link" href="dashboard.html#reports"><svg><use href="#i-file"/></svg> Accomplishment Reports</a>
+
+          <p class="side-group-label">Account</p>
+          <a class="side-link" href="dashboard.html#profile"><svg><use href="#i-user"/></svg> My Profile</a>
+          <a class="side-link" href="dashboard.html#notifications"><svg><use href="#i-bell"/></svg> Notifications <span class="side-count">3</span></a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-user">
+            <span class="avatar" data-user-initials>ST</span>
+            <span class="user-meta">
+              <strong data-user-name>Student</strong>
+              <span data-user-role>Student</span>
+            </span>
+          </div>
+          <button class="btn-logout" type="button" data-action="logout">
+            <svg><use href="#i-logout"/></svg> Log Out
+          </button>
+        </div>
+      </aside>
+
+      <!-- ==================== Main ==================== -->
+      <div class="dash-main">
+        <header class="dash-topbar">
+          <div class="topbar-left">
+            <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle sidebar">
+              <svg width="18" height="18"><use href="#i-menu"/></svg>
+            </button>
+            <div class="breadcrumb">
+              <span class="crumb-role">Student Portal</span>
+              <span class="crumb-title" data-page-title>Browse Companies</span>
+            </div>
+          </div>
+
+          <div class="topbar-right">
+            <button class="icon-btn" id="notifToggle" type="button" aria-label="Notifications" aria-expanded="false" aria-controls="notifPanel">
+              <svg><use href="#i-bell"/></svg>
+              <span class="notif-count" data-notif-count hidden></span>
+            </button>
+            <div class="topbar-user">
+              <span class="avatar avatar--light" data-user-initials>ST</span>
+              <span class="user-meta">
+                <strong data-user-name>Student</strong>
+                <span data-user-role>Student</span>
+              </span>
+            </div>
+          </div>
+
+          <div class="notif-panel" id="notifPanel" hidden>
+            <div class="notif-panel-head"><span>Notifications</span><span class="card-head-note">3 unread</span></div>
+            <div class="notif-list">
+              <div class="notif-item" data-notif-unread>
+                <span class="notif-dot"></span>
+                <div><span class="notif-title">New opportunity published</span>Pixelworks Studio opened UI/UX Design Intern.<span class="notif-time">1 hour ago</span></div>
+              </div>
+              <div class="notif-item" data-notif-unread>
+                <span class="notif-dot"></span>
+                <div><span class="notif-title">Placement approved</span>Your placement was validated by the school.<span class="notif-time">2 hours ago</span></div>
+              </div>
+              <div class="notif-item" data-notif-unread>
+                <span class="notif-dot"></span>
+                <div><span class="notif-title">Requirement revision</span>Please re-upload a clearer medical certificate.<span class="notif-time">2 days ago</span></div>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <main class="dash-content">
+          <!-- ============ Browse hero ============ -->
+          <section class="browse-hero">
+            <div class="browse-hero__bg" aria-hidden="true">
+              <img src="../assets/images/browse-hero-cebu.jpg" alt="" />
+            </div>
+            <span class="hero-eyebrow hero-eyebrow--media">Verified Partner Network</span>
+            <h1>Find your internship with trusted partner companies.</h1>
+            <p>
+              Explore school-verified companies across IT, hospitality, media,
+              analytics, and more. Filter by industry, compare open positions,
+              and apply with one click.
+            </p>
+
+            <form class="browse-search" id="browseSearchForm" role="search" onsubmit="return false">
+              <label class="sr-only" for="companySearch">Search companies or positions</label>
+              <input class="form-control" type="search" id="companySearch" placeholder="Search company, position, or location&hellip;" />
+              <button class="btn btn-accent browse-search-btn" type="submit">
+                <svg width="18" height="18" style="margin-right:6px"><use href="#i-search"/></svg> Search
+              </button>
+            </form>
+
+            <div class="hero-stats">
+              <div class="hero-stat"><strong>6</strong><span>Verified companies</span></div>
+              <div class="hero-stat"><strong>24</strong><span>Open positions</span></div>
+              <div class="hero-stat"><strong>3</strong><span>Applications sent</span></div>
+            </div>
+          </section>
+
+          <!-- ============ Toolbar ============ -->
+          <div class="browse-toolbar">
+            <div class="chip-row" role="group" aria-label="Filter by industry">
+              <button class="chip is-on" type="button" data-filter="all">All industries</button>
+              <button class="chip" type="button" data-filter="tech">Information Technology</button>
+              <button class="chip" type="button" data-filter="hospitality">Hospitality</button>
+              <button class="chip" type="button" data-filter="media">Media &amp; Creative</button>
+              <button class="chip" type="button" data-filter="data">Data &amp; Analytics</button>
+              <button class="chip" type="button" data-filter="aviation">Aviation</button>
+            </div>
+            <label class="sr-only" for="companySort">Sort companies</label>
+            <select class="browse-select" id="companySort">
+              <option>Sort: Most positions</option>
+              <option>Sort: Highest rated</option>
+              <option>Sort: A &ndash; Z</option>
+            </select>
+          </div>
+
+          <!-- ============ Company grid ============ -->
+          <div class="company-grid" id="companyGrid">
+            <article class="company-card" data-industry="tech" data-search="brightwave solutions inc information technology it support intern qa intern data encoding assistant cebu city cebu it park lahug">
+              <div class="company-card__media">
+                <img src="../assets/images/company-brightwave.jpg" alt="Brightwave Solutions Inc. office" />
+                <span class="company-card__tag"><svg><use href="#i-check"/></svg> Verified</span>
+              </div>
+              <div class="company-card__body">
+                <div>
+                  <h2 class="company-card__name">Brightwave Solutions Inc.</h2>
+                  <div class="company-card__meta" style="margin-top:6px">
+                    <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu IT Park, Cebu City</span>
+                    <span class="meta-item"><svg><use href="#i-briefcase"/></svg> Information Technology</span>
+                  </div>
+                </div>
+                <div class="position-list">
+                  <div class="position-row"><span class="position-name">IT Support Intern</span><span class="position-slots">3 slots</span></div>
+                  <div class="position-row"><span class="position-name">QA Intern</span><span class="position-slots">2 slots</span></div>
+                  <div class="position-row"><span class="position-name">Data Encoding Assistant</span><span class="position-slots">1 slot</span></div>
+                </div>
+                <div class="company-card__foot">
+                  <span class="rating"><svg><use href="#i-star"/></svg> 4.8</span>
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Applying to Brightwave Solutions Inc.">View &amp; Apply</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="company-card" data-industry="hospitality" data-search="grand meridian hotel hospitality tourism front desk trainee f b service intern cebu city">
+              <div class="company-card__media">
+                <img src="../assets/images/company-meridian.jpg" alt="Grand Meridian Hotel facade" />
+                <span class="company-card__tag"><svg><use href="#i-check"/></svg> Verified</span>
+              </div>
+              <div class="company-card__body">
+                <div>
+                  <h2 class="company-card__name">Grand Meridian Hotel</h2>
+                  <div class="company-card__meta" style="margin-top:6px">
+                    <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu City</span>
+                    <span class="meta-item"><svg><use href="#i-briefcase"/></svg> Hospitality &amp; Tourism</span>
+                  </div>
+                </div>
+                <div class="position-list">
+                  <div class="position-row"><span class="position-name">Front Desk Trainee</span><span class="position-slots">2 slots</span></div>
+                  <div class="position-row"><span class="position-name">F&amp;B Service Intern</span><span class="position-slots">2 slots</span></div>
+                </div>
+                <div class="company-card__foot">
+                  <span class="rating"><svg><use href="#i-star"/></svg> 4.6</span>
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Applying to Grand Meridian Hotel">View &amp; Apply</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="company-card" data-industry="media" data-search="northgate media media creative production intern marketing assistant cebu city mandaue city">
+              <div class="company-card__media">
+                <img src="../assets/images/company-northgate.jpg" alt="Northgate Media studio" />
+                <span class="company-card__tag"><svg><use href="#i-check"/></svg> Verified</span>
+              </div>
+              <div class="company-card__body">
+                <div>
+                  <h2 class="company-card__name">Northgate Media</h2>
+                  <div class="company-card__meta" style="margin-top:6px">
+                    <span class="meta-item"><svg><use href="#i-pin"/></svg> Mandaue City, Cebu</span>
+                    <span class="meta-item"><svg><use href="#i-briefcase"/></svg> Media &amp; Creative</span>
+                  </div>
+                </div>
+                <div class="position-list">
+                  <div class="position-row"><span class="position-name">Production Intern</span><span class="position-slots">2 slots</span></div>
+                  <div class="position-row"><span class="position-name">Marketing Assistant</span><span class="position-slots">1 slot</span></div>
+                </div>
+                <div class="company-card__foot">
+                  <span class="rating"><svg><use href="#i-star"/></svg> 4.5</span>
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Applying to Northgate Media">View &amp; Apply</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="company-card" data-industry="data" data-search="datahub analytics data analytics business intelligence analyst intern cebu city cebu business park">
+              <div class="company-card__media">
+                <img src="../assets/images/company-datahub.jpg" alt="DataHub Analytics workspace" />
+                <span class="company-card__tag"><svg><use href="#i-check"/></svg> Verified</span>
+              </div>
+              <div class="company-card__body">
+                <div>
+                  <h2 class="company-card__name">DataHub Analytics</h2>
+                  <div class="company-card__meta" style="margin-top:6px">
+                    <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu Business Park, Cebu City</span>
+                    <span class="meta-item"><svg><use href="#i-briefcase"/></svg> Data &amp; Analytics</span>
+                  </div>
+                </div>
+                <div class="position-list">
+                  <div class="position-row"><span class="position-name">Data Analyst Intern</span><span class="position-slots">2 slots</span></div>
+                  <div class="position-row"><span class="position-name">Business Intelligence Intern</span><span class="position-slots">1 slot</span></div>
+                </div>
+                <div class="company-card__foot">
+                  <span class="rating"><svg><use href="#i-star"/></svg> 4.7</span>
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Applying to DataHub Analytics">View &amp; Apply</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="company-card" data-industry="aviation" data-search="cebu pacific air aviation transport customer service trainee operations intern lapu-lapu city mactan cebu">
+              <div class="company-card__media">
+                <img src="../assets/images/company-cebupacific.jpg" alt="Cebu Pacific Air aircraft" />
+                <span class="company-card__tag"><svg><use href="#i-check"/></svg> Verified</span>
+              </div>
+              <div class="company-card__body">
+                <div>
+                  <h2 class="company-card__name">Cebu Pacific Air</h2>
+                  <div class="company-card__meta" style="margin-top:6px">
+                    <span class="meta-item"><svg><use href="#i-pin"/></svg> Lapu-Lapu City, Cebu</span>
+                    <span class="meta-item"><svg><use href="#i-briefcase"/></svg> Aviation &amp; Transport</span>
+                  </div>
+                </div>
+                <div class="position-list">
+                  <div class="position-row"><span class="position-name">Customer Service Trainee</span><span class="position-slots">3 slots</span></div>
+                  <div class="position-row"><span class="position-name">Operations Intern</span><span class="position-slots">1 slot</span></div>
+                </div>
+                <div class="company-card__foot">
+                  <span class="rating"><svg><use href="#i-star"/></svg> 4.4</span>
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Applying to Cebu Pacific Air">View &amp; Apply</button>
+                </div>
+              </div>
+            </article>
+
+            <article class="company-card" data-industry="tech" data-search="pixelworks studio design technology ui ux design intern frontend developer intern cebu city">
+              <div class="company-card__media">
+                <img src="../assets/images/company-pixelworks.jpg" alt="Pixelworks Studio design floor" />
+                <span class="company-card__tag"><svg><use href="#i-check"/></svg> Verified</span>
+              </div>
+              <div class="company-card__body">
+                <div>
+                  <h2 class="company-card__name">Pixelworks Studio</h2>
+                  <div class="company-card__meta" style="margin-top:6px">
+                    <span class="meta-item"><svg><use href="#i-pin"/></svg> Cebu City</span>
+                    <span class="meta-item"><svg><use href="#i-briefcase"/></svg> Design &amp; Technology</span>
+                  </div>
+                </div>
+                <div class="position-list">
+                  <div class="position-row"><span class="position-name">UI/UX Design Intern</span><span class="position-slots">2 slots</span></div>
+                  <div class="position-row"><span class="position-name">Frontend Developer Intern</span><span class="position-slots">1 slot</span></div>
+                </div>
+                <div class="company-card__foot">
+                  <span class="rating"><svg><use href="#i-star"/></svg> 4.6</span>
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Applying to Pixelworks Studio">View &amp; Apply</button>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <p class="browse-empty" id="browseEmpty">
+            No companies match your search. Try a different keyword or industry.
+          </p>
+        </main>
+      </div>
+    </div>
+
+    <div class="toast" id="dashToast" role="status" aria-live="polite" hidden></div>
+
+    <script src="../js/auth.js"></script>
+    <script src="../js/access-control.js"></script>
+    <script src="../js/dashboard.js"></script>
+    <script>
+      (function () {
+        "use strict";
+        var grid = document.getElementById("companyGrid");
+        var empty = document.getElementById("browseEmpty");
+        var input = document.getElementById("companySearch");
+        if (!grid || !input) return;
+
+        var cards = Array.prototype.slice.call(
+          grid.querySelectorAll("[data-industry]")
+        );
+        var chips = Array.prototype.slice.call(
+          document.querySelectorAll("[data-filter]")
+        );
+        var activeFilter = "all";
+
+        function apply() {
+          var query = (input.value || "").trim().toLowerCase();
+          var shown = 0;
+
+          cards.forEach(function (card) {
+            var industry = card.getAttribute("data-industry");
+            var text = (card.getAttribute("data-search") || "").toLowerCase();
+            var matchesFilter = activeFilter === "all" || industry === activeFilter;
+            var matchesQuery = !query || text.indexOf(query) !== -1;
+            var visible = matchesFilter && matchesQuery;
+            card.style.display = visible ? "" : "none";
+            if (visible) shown += 1;
+          });
+
+          if (empty) empty.classList.toggle("is-visible", shown === 0);
+        }
+
+        chips.forEach(function (chip) {
+          chip.addEventListener("click", function () {
+            activeFilter = chip.getAttribute("data-filter") || "all";
+            chips.forEach(function (item) {
+              item.classList.toggle("is-on", item === chip);
+            });
+            apply();
+          });
+        });
+
+        input.addEventListener("input", apply);
+
+        var form = document.getElementById("browseSearchForm");
+        if (form) {
+          form.addEventListener("submit", function (event) {
+            event.preventDefault();
+            apply();
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>

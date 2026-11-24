@@ -40,6 +40,8 @@
         <symbol id="i-trend" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="m3 16 5-5 3.5 3.5L21 6"/><path d="M15 6h6v6"/></symbol>
         <symbol id="i-award" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="9" r="5.5"/><path d="m8.5 13.5-1.5 7 5-3 5 3-1.5-7"/></symbol>
         <symbol id="i-target" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="4.5"/><circle cx="12" cy="12" r="1"/></symbol>
+        <symbol id="i-search" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-3.6-3.6"/></symbol>
+        <symbol id="i-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></symbol>
       </defs>
     </svg>
 
@@ -55,6 +57,9 @@
         </a>
 
         <nav class="side-nav" aria-label="Student navigation">
+          <p class="side-group-label">Discover</p>
+          <a class="side-link side-link--feature" href="browse.html"><svg><use href="#i-search"/></svg> Browse Companies</a>
+
           <p class="side-group-label">Overview</p>
           <a class="side-link" href="#overview" data-nav="overview" data-title="Dashboard Overview"><svg><use href="#i-grid"/></svg> Dashboard</a>
           <a class="side-link" href="#placement" data-nav="placement" data-title="My Placement"><svg><use href="#i-building"/></svg> My Placement</a>
@@ -136,10 +141,13 @@
         <main class="dash-content">
           <!-- ============ Overview ============ -->
           <section class="dash-section" data-section="overview">
-            <div class="hero-panel">
+            <div class="hero-panel hero-panel--media">
+              <div class="hero-media" aria-hidden="true">
+                <img src="../assets/images/student-professional.jpg" alt="" />
+              </div>
               <div class="hero-layout">
                 <div>
-                  <span class="hero-eyebrow">Student Internship Journey</span>
+                  <span class="hero-eyebrow hero-eyebrow--media">Student Internship Journey</span>
                   <h1>Welcome back, <span data-user-name>Student</span>.</h1>
                   <p>
                     You are on track with your work immersion. Keep logging
@@ -152,6 +160,9 @@
                     <div class="hero-stat"><strong>4/5</strong><span>Requirements</span></div>
                   </div>
                   <div class="hero-actions">
+                    <a class="btn btn-secondary btn-sm" href="browse.html">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-search"/></svg> Explore Companies
+                    </a>
                     <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Logging attendance">
                       <svg width="16" height="16" style="margin-right:6px"><use href="#i-clock"/></svg> Log Attendance
                     </button>
@@ -319,7 +330,7 @@
                 <div class="info-grid">
                   <div class="info-item"><p class="info-label">Company Name</p><p class="info-value">Brightwave Solutions Inc.</p></div>
                   <div class="info-item"><p class="info-label">Industry</p><p class="info-value">Information Technology</p></div>
-                  <div class="info-item"><p class="info-label">Address</p><p class="info-value">Cyber Park Tower, Makati City</p></div>
+                  <div class="info-item"><p class="info-label">Address</p><p class="info-value">Cebu IT Park, Lahug, Cebu City</p></div>
                   <div class="info-item"><p class="info-label">Verification</p><p class="info-value">School-verified partner</p></div>
                 </div>
               </div>
@@ -542,17 +553,37 @@
 
           <!-- ============ Profile ============ -->
           <section class="dash-section" data-section="profile" hidden>
-            <div class="page-head">
-              <div>
-                <h1 class="page-title">My Profile</h1>
-                <p class="page-desc">Your personal and academic information used for internship eligibility.</p>
+            <div class="profile-hero">
+              <div class="profile-hero__banner">
+                <img src="../assets/images/student-professional.jpg" alt="" />
               </div>
-              <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Editing your profile">Edit Profile</button>
+              <div class="profile-hero__body">
+                <span class="profile-hero__avatar" data-user-initials>ST</span>
+                <div class="profile-hero__id">
+                  <h1 data-user-name>Student</h1>
+                  <p class="profile-hero__sub">BS Information Technology &middot; 4th Year &middot; BSIT 4-A</p>
+                  <div class="profile-tags">
+                    <span class="profile-tag"><svg><use href="#i-check"/></svg> Eligible for Internship</span>
+                    <span class="profile-tag"><svg><use href="#i-building"/></svg> Placed &middot; Brightwave Solutions</span>
+                    <span class="profile-tag"><svg><use href="#i-user"/></svg> ID: <span data-user-id>&mdash;</span></span>
+                  </div>
+                </div>
+                <div class="profile-hero__actions">
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Editing your profile">Edit Profile</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Downloading your resume">Download Resume</button>
+                </div>
+              </div>
+              <div class="profile-hero__stats">
+                <div class="profile-stat"><strong>248</strong><span>Rendered Hours</span></div>
+                <div class="profile-stat"><strong>51%</strong><span>Progress</span></div>
+                <div class="profile-stat"><strong>3</strong><span>Applications</span></div>
+                <div class="profile-stat"><strong>2</strong><span>Reports</span></div>
+              </div>
             </div>
 
-            <div class="grid-2">
+            <div class="grid-2" style="margin-top: var(--space-5)">
               <div class="dash-card">
-                <div class="card-head"><h2>Personal Information</h2></div>
+                <div class="card-head"><h2>Personal Information</h2><span class="badge badge--success">Verified</span></div>
                 <div class="info-grid">
                   <div class="info-item"><p class="info-label">Full Name</p><p class="info-value" data-user-name>Student</p></div>
                   <div class="info-item"><p class="info-label">Student ID</p><p class="info-value" data-user-id>&mdash;</p></div>

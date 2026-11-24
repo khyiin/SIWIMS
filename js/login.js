@@ -120,7 +120,6 @@
     }
     submitButton.disabled = true;
     submitButton.textContent = "Signing in\u2026";
-    showAlert("success", "Welcome back, " + result.user.name + "! Redirecting to your dashboard\u2026");
 
     auth.createSession(result.user, rememberInput.checked);
 

@@ -27,7 +27,7 @@
       label: "Student",
       blurb: "BS Information Technology \u00b7 4th Year",
       meta: "Student Account",
-      dashboard: "student/dashboard.html",
+      dashboard: "student/browse.html",
     },
     coordinator: {
       key: "coordinator",
@@ -323,7 +323,33 @@
     });
   }
 
+  /* ----------------------------------------------------------------------
+     "Back" control
+     ----------------------------------------------------------------------
+     Sends the visitor to the page they actually came from instead of the
+     homepage. When there is no browsing history (e.g. the page was opened
+     directly), the element's own href is used as a sensible fallback.
+     ---------------------------------------------------------------------- */
+  function bindBackControls() {
+    var controls = document.querySelectorAll("[data-back]");
+    Array.prototype.forEach.call(controls, function (control) {
+      control.addEventListener("click", function (event) {
+        if (global.history && global.history.length > 1) {
+          event.preventDefault();
+          global.history.back();
+        }
+      });
+    });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", bindBackControls);
+  } else {
+    bindBackControls();
+  }
+
   global.SIWIMS = global.SIWIMS || {};
+
   global.SIWIMS.auth = {
     ROLES: ROLES,
     findUser: findUser,

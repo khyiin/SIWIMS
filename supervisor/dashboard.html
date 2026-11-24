@@ -14,6 +14,12 @@
     <link rel="stylesheet" href="../css/dashboard.css" />
   </head>
   <body class="dashboard" data-role="supervisor">
+    <div class="ambient" aria-hidden="true">
+      <span class="orb orb--a"></span>
+      <span class="orb orb--b"></span>
+      <span class="orb orb--c"></span>
+    </div>
+
     <svg width="0" height="0" style="position: absolute" aria-hidden="true" focusable="false">
       <defs>
         <symbol id="i-grid" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="7" height="7" rx="1.5"/><rect x="13" y="4" width="7" height="7" rx="1.5"/><rect x="4" y="13" width="7" height="7" rx="1.5"/><rect x="13" y="13" width="7" height="7" rx="1.5"/></symbol>
@@ -51,6 +57,9 @@
 
           <p class="side-group-label">Evaluation</p>
           <a class="side-link" href="#evaluations" data-nav="evaluations" data-title="Evaluations"><svg><use href="#i-award"/></svg> Evaluations</a>
+
+          <p class="side-group-label">Account</p>
+          <a class="side-link" href="#profile" data-nav="profile" data-title="My Profile"><svg><use href="#i-user"/></svg> My Profile</a>
           <a class="side-link" href="#notifications" data-nav="notifications" data-title="Notifications"><svg><use href="#i-bell"/></svg> Notifications</a>
         </nav>
 
@@ -95,65 +104,149 @@
         <main class="dash-content">
           <!-- ============ Overview ============ -->
           <section class="dash-section" data-section="overview">
-            <div class="page-head">
-              <div>
-                <h1 class="page-title">Welcome, <span data-user-name>Supervisor</span></h1>
-                <p class="page-desc">Verify attendance, review reports, and evaluate your assigned interns.</p>
+            <div class="hero-panel hero-panel--media">
+              <div class="hero-media"><img src="../assets/images/office-collaboration.jpg" alt="" /></div>
+              <div class="focus-hero">
+                <div>
+                  <span class="hero-eyebrow hero-eyebrow--media">Company Site Supervision</span>
+                  <h1>Good day, <span data-user-name>Supervisor</span>.</h1>
+                  <p>
+                    Verify daily attendance, review weekly accomplishment reports, and
+                    guide your assigned interns toward completion.
+                  </p>
+                  <div class="hero-actions">
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Verifying attendance">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-clock"/></svg> Verify Attendance
+                    </button>
+                    <button class="btn btn-secondary btn-sm" type="button" data-demo-action="Reviewing a report">
+                      <svg width="16" height="16" style="margin-right:6px"><use href="#i-file"/></svg> Review Reports
+                    </button>
+                  </div>
+                </div>
+                <div class="focus-card">
+                  <span class="focus-card__value">2</span>
+                  <span class="focus-card__label">attendance logs waiting for your verification today</span>
+                  <div class="focus-card__actions">
+                    <a class="btn btn-secondary btn-sm" href="#attendance" data-nav="attendance" data-title="Attendance">Open Logs</a>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <div class="stat-grid">
+            <div class="stat-grid" style="margin-top: var(--space-5)">
               <article class="stat-card">
                 <div class="stat-top"><span class="stat-label">Assigned Interns</span><span class="stat-icon"><svg><use href="#i-users"/></svg></span></div>
-                <p class="stat-value">4</p><p class="stat-foot">Active this term</p>
+                <p class="stat-value">4</p>
+                <p class="stat-foot">Under your supervision</p>
               </article>
               <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Pending Attendance</span><span class="stat-icon"><svg><use href="#i-clock"/></svg></span></div>
-                <p class="stat-value">2</p><p class="stat-foot">Awaiting verification</p>
+                <div class="stat-top"><span class="stat-label">Verified Hours</span><span class="stat-icon"><svg><use href="#i-clock"/></svg></span></div>
+                <p class="stat-value">1,322</p>
+                <p class="stat-foot">Across all interns</p>
               </article>
               <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Reports to Review</span><span class="stat-icon"><svg><use href="#i-file"/></svg></span></div>
-                <p class="stat-value">2</p><p class="stat-foot">Submitted this week</p>
+                <div class="stat-top"><span class="stat-label">Pending Reviews</span><span class="stat-icon"><svg><use href="#i-file"/></svg></span></div>
+                <p class="stat-value">4</p>
+                <p class="stat-foot">Attendance &amp; reports</p>
               </article>
               <article class="stat-card">
-                <div class="stat-top"><span class="stat-label">Evaluations Due</span><span class="stat-icon"><svg><use href="#i-award"/></svg></span></div>
-                <p class="stat-value">1</p><p class="stat-foot">Intern at required hours</p>
+                <div class="stat-top"><span class="stat-label">Avg. Progress</span><span class="stat-icon"><svg><use href="#i-chart"/></svg></span></div>
+                <p class="stat-value">68%</p>
+                <p class="stat-foot">Toward completion</p>
               </article>
             </div>
 
-            <div class="split-main">
+            <div class="grid-2-1" style="margin-top: var(--space-5)">
               <div class="dash-card">
-                <div class="card-head"><h2>Pending Attendance</h2></div>
-                <div class="table-wrap" style="border: 0">
-                  <table class="data-table">
-                    <caption class="sr-only">Attendance awaiting verification</caption>
-                    <thead>
-                      <tr><th scope="col">Intern</th><th scope="col">Date</th><th scope="col">Rendered</th><th scope="col">Action</th></tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td class="cell-strong">Juan Dela Cruz</td><td>Nov 20, 2026</td><td>8.0 hrs</td>
-                        <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Verifying attendance">Verify</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting attendance">Reject</button></div></td>
-                      </tr>
-                      <tr>
-                        <td class="cell-strong">Paolo Reyes</td><td>Nov 20, 2026</td><td>7.5 hrs</td>
-                        <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Verifying attendance">Verify</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting attendance">Reject</button></div></td>
-                      </tr>
-                      <tr>
-                        <td class="cell-strong">Mark Lim</td><td>Nov 19, 2026</td><td>8.3 hrs</td>
-                        <td><div class="table-actions"><button class="btn btn-primary btn-sm" type="button" data-demo-action="Verifying attendance">Verify</button><button class="btn btn-ghost btn-sm" type="button" data-demo-action="Rejecting attendance">Reject</button></div></td>
-                      </tr>
-                    </tbody>
-                  </table>
+                <div class="card-head"><h2>Weekly Verified Hours</h2><span class="card-head-note">Last 7 weeks &middot; all interns</span></div>
+                <div class="bar-chart">
+                  <div class="bar" title="Week 1 &middot; 96 hours"><i style="--h:62"></i><span>W1</span></div>
+                  <div class="bar" title="Week 2 &middot; 108 hours"><i style="--h:71"></i><span>W2</span></div>
+                  <div class="bar" title="Week 3 &middot; 120 hours"><i style="--h:79"></i><span>W3</span></div>
+                  <div class="bar" title="Week 4 &middot; 102 hours"><i style="--h:66"></i><span>W4</span></div>
+                  <div class="bar" title="Week 5 &middot; 114 hours"><i style="--h:75"></i><span>W5</span></div>
+                  <div class="bar" title="Week 6 &middot; 132 hours"><i style="--h:88"></i><span>W6</span></div>
+                  <div class="bar" title="Week 7 &middot; 72 hours so far"><i style="--h:48"></i><span>W7</span></div>
                 </div>
               </div>
 
               <div class="dash-card">
-                <div class="card-head"><h2>Reports for Review</h2></div>
-                <div class="list">
-                  <div class="list-item"><span class="list-avatar">JD</span><div class="list-main"><span class="list-title">Juan Dela Cruz</span><span class="list-sub">Week 7 &middot; Nov 17 &ndash; Nov 21</span></div><span class="list-side"><span class="badge badge--info">Submitted</span></span></div>
-                  <div class="list-item"><span class="list-avatar">ML</span><div class="list-main"><span class="list-title">Mark Lim</span><span class="list-sub">Week 7 &middot; Nov 17 &ndash; Nov 21</span></div><span class="list-side"><span class="badge badge--info">Submitted</span></span></div>
-                  <div class="list-item"><span class="list-avatar">SG</span><div class="list-main"><span class="list-title">Sofia Gomez</span><span class="list-sub">Week 12 &middot; Final report</span></div><span class="list-side"><span class="badge badge--warning">Under Review</span></span></div>
+                <div class="card-head"><h2>Intern Status</h2></div>
+                <div style="display:flex; justify-content:center; padding: var(--space-2) 0 var(--space-3)">
+                  <div class="donut" style="background: conic-gradient(#7c5cff 0 25%, #2f9e6f 25% 75%, #d8a63b 75% 100%)">
+                    <div class="donut-center"><strong>4</strong><span>Interns</span></div>
+                  </div>
+                </div>
+                <div class="legend">
+                  <div class="legend-item"><span class="legend-dot" style="background:#7c5cff"></span> For Final Evaluation <span class="legend-value">1</span></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#2f9e6f"></span> On Track <span class="legend-value">2</span></div>
+                  <div class="legend-item"><span class="legend-dot" style="background:#d8a63b"></span> Behind Schedule <span class="legend-value">1</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="split-main" style="margin-top: var(--space-5)">
+              <div class="dash-card">
+                <div class="card-head"><h2>Today&rsquo;s Desk</h2><span class="card-head-note">Waiting on you</span></div>
+                <div class="todo-list">
+                  <a class="todo-row" href="#attendance" data-nav="attendance" data-title="Attendance">
+                    <span class="todo-ico"><svg><use href="#i-clock"/></svg></span>
+                    <span class="todo-main">
+                      <span class="todo-title">Verify attendance logs</span>
+                      <span class="todo-sub">Juan Dela Cruz &amp; Paolo Reyes &middot; Nov 20</span>
+                    </span>
+                    <span class="todo-count">2</span>
+                  </a>
+                  <a class="todo-row" href="#reports" data-nav="reports" data-title="Reports">
+                    <span class="todo-ico"><svg><use href="#i-file"/></svg></span>
+                    <span class="todo-main">
+                      <span class="todo-title">Review weekly reports</span>
+                      <span class="todo-sub">Week 7 submissions awaiting approval</span>
+                    </span>
+                    <span class="todo-count">2</span>
+                  </a>
+                  <a class="todo-row" href="#evaluations" data-nav="evaluations" data-title="Evaluations">
+                    <span class="todo-ico"><svg><use href="#i-award"/></svg></span>
+                    <span class="todo-main">
+                      <span class="todo-title">Submit final evaluation</span>
+                      <span class="todo-sub">Sofia Gomez &middot; 486 verified hours</span>
+                    </span>
+                    <span class="todo-count">1</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Milestones</h2><span class="card-head-note">Latest activity</span></div>
+                <div class="timeline">
+                  <div class="timeline-item is-done"><p class="timeline-title">Sofia Gomez completed hours</p><p class="timeline-meta">486 verified hours &middot; 3d ago</p></div>
+                  <div class="timeline-item is-done"><p class="timeline-title">Week 7 reports submitted</p><p class="timeline-meta">2 interns &middot; 4h ago</p></div>
+                  <div class="timeline-item"><p class="timeline-title">Final evaluation due</p><p class="timeline-meta">Sofia Gomez &middot; Nov 28</p></div>
+                  <div class="timeline-item"><p class="timeline-title">Mid-term review</p><p class="timeline-meta">Paolo Reyes &middot; Dec 02</p></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: var(--space-5)">
+              <div class="dash-card">
+                <div class="card-head"><h2>Attendance Density</h2><span class="card-head-note">Last 4 weeks</span></div>
+                <div class="heat">
+                  <span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:1"></span><span class="heat-cell" style="--lvl:0"></span>
+                  <span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:2"></span><span class="heat-cell" style="--lvl:0"></span><span class="heat-cell" style="--lvl:0"></span>
+                  <span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:1"></span><span class="heat-cell" style="--lvl:0"></span>
+                  <span class="heat-cell" style="--lvl:3"></span><span class="heat-cell" style="--lvl:4"></span><span class="heat-cell" style="--lvl:2"></span><span class="heat-cell" style="--lvl:0"></span><span class="heat-cell" style="--lvl:1"></span><span class="heat-cell" style="--lvl:0"></span><span class="heat-cell" style="--lvl:0"></span>
+                </div>
+                <div class="heat-axis"><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span><span>S</span></div>
+                <div class="heat-legend"><span>Less</span><i></i><i></i><i></i><span>More</span></div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Intern Progress</h2><span class="card-head-note">Verified hours</span></div>
+                <div class="meter-list">
+                  <div class="meter-row"><span class="meter-name">Sofia Gomez</span><span class="meter-track"><span class="meter-bar" style="--h:100"></span></span><span class="meter-value">100%</span></div>
+                  <div class="meter-row"><span class="meter-name">Mark Lim</span><span class="meter-track"><span class="meter-bar" style="--h:88"></span></span><span class="meter-value">88%</span></div>
+                  <div class="meter-row"><span class="meter-name">Juan Dela Cruz</span><span class="meter-track"><span class="meter-bar" style="--h:51"></span></span><span class="meter-value">51%</span></div>
+                  <div class="meter-row"><span class="meter-name">Paolo Reyes</span><span class="meter-track"><span class="meter-bar" style="--h:33"></span></span><span class="meter-value">33%</span></div>
                 </div>
               </div>
             </div>
@@ -335,6 +428,59 @@
                   <div class="list-item"><span class="list-avatar">SG</span><div class="list-main"><span class="list-title">Sofia Gomez</span><span class="list-sub">Final evaluation &middot; Pending submission</span></div><span class="list-side"><span class="badge badge--warning">Due</span></span></div>
                   <div class="list-item"><span class="list-avatar">RD</span><div class="list-main"><span class="list-title">Rica Delos Santos</span><span class="list-sub">Final evaluation &middot; Submitted Mar 2026</span></div><span class="list-side"><span class="badge badge--success">Submitted</span></span></div>
                   <div class="list-item"><span class="list-avatar">NB</span><div class="list-main"><span class="list-title">Noel Bautista</span><span class="list-sub">Final evaluation &middot; Submitted Feb 2026</span></div><span class="list-side"><span class="badge badge--success">Submitted</span></span></div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- ============ Profile ============ -->
+          <section class="dash-section" data-section="profile" hidden>
+            <div class="profile-hero">
+              <div class="profile-hero__banner">
+                <img src="../assets/images/building.jpg" alt="" />
+              </div>
+              <div class="profile-hero__body">
+                <span class="profile-hero__avatar" data-user-initials>MV</span>
+                <div class="profile-hero__id">
+                  <h1 data-user-name>Supervisor</h1>
+                  <p class="profile-hero__sub">Company Supervisor &middot; Brightwave Solutions Inc.</p>
+                  <div class="profile-tags">
+                    <span class="profile-tag"><svg><use href="#i-info"/></svg> Verified Supervisor</span>
+                    <span class="profile-tag"><svg><use href="#i-users"/></svg> 3 assigned interns</span>
+                    <span class="profile-tag"><svg><use href="#i-award"/></svg> 12 evaluations</span>
+                  </div>
+                </div>
+                <div class="profile-hero__actions">
+                  <button class="btn btn-primary btn-sm" type="button" data-demo-action="Editing your profile">Edit Profile</button>
+                  <button class="btn btn-ghost btn-sm" type="button" data-demo-action="Exporting records">Export Records</button>
+                </div>
+              </div>
+              <div class="profile-hero__stats">
+                <div class="profile-stat"><strong>3</strong><span>Interns</span></div>
+                <div class="profile-stat"><strong>2</strong><span>Pending Reviews</span></div>
+                <div class="profile-stat"><strong>12</strong><span>Evaluations</span></div>
+                <div class="profile-stat"><strong>68%</strong><span>Avg. Progress</span></div>
+              </div>
+            </div>
+
+            <div class="grid-2" style="margin-top: var(--space-5)">
+              <div class="dash-card">
+                <div class="card-head"><h2>Supervisor Information</h2><span class="badge badge--success">Active</span></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Full Name</p><p class="info-value" data-user-name>Supervisor</p></div>
+                  <div class="info-item"><p class="info-label">Email</p><p class="info-value" data-user-email>&mdash;</p></div>
+                  <div class="info-item"><p class="info-label">Company</p><p class="info-value">Brightwave Solutions Inc.</p></div>
+                  <div class="info-item"><p class="info-label">Contact Number</p><p class="info-value">+63 900 000 0000</p></div>
+                </div>
+              </div>
+
+              <div class="dash-card">
+                <div class="card-head"><h2>Assignment</h2></div>
+                <div class="info-grid">
+                  <div class="info-item"><p class="info-label">Department</p><p class="info-value">IT Operations</p></div>
+                  <div class="info-item"><p class="info-label">Position</p><p class="info-value">Senior IT Engineer</p></div>
+                  <div class="info-item"><p class="info-label">Assigned Interns</p><p class="info-value">3 interns</p></div>
+                  <div class="info-item"><p class="info-label">Work Location</p><p class="info-value">Cebu IT Park, Cebu City</p></div>
                 </div>
               </div>
             </div>
